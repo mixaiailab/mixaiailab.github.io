@@ -1,9 +1,7 @@
-# About
-This is the demo site for [Fuwari](https://github.com/saicaca/fuwari).
+医学X射线前沿成像算法与装备实验室（Medical X-ray Advanced Imaging Algorithm and Instrumentation Laboratory，简称MIX‑AIAI Lab）由国家级领军学者马建华教授与南方医科大学曾栋副研究员共同领导，聚焦低剂量高分辨CT成像理论与算法，致力于突破临床辐射剂量与图像质量之间的矛盾，推动国产高端CT装备自主创新。
 
-::github{repo="saicaca/fuwari"}
+MIX‑AIAI Lab主要研究方向包括：（1）高端CT成像理论与算法，提出非直接对数校正可学习重建、时空异质建模流变重建等创新框架；（2）低剂量CT智能成像，探索深度学习与经典算法融合的高性能重建技术；（3）跨机型与多模态成像应用，研究可迁移CT成像模型，探索能谱CT、灌注CT及分布式微剂量CT等前沿方向，相关成果发表于IEEE TMI、PMB、TRPMS等权威期刊。
 
-> ### Sources of images used in this site
-> - [Unsplash](https://unsplash.com/)
-> - [星と少女](https://www.pixiv.net/artworks/108916539) by [Stella](https://www.pixiv.net/users/93273965)
-> - [Rabbit - v1.4 Showcase](https://civitai.com/posts/586908) by [Rabbit_YourMajesty](https://civitai.com/user/Rabbit_YourMajesty)
+MIX‑AIAI Lab与西安交通大学智能化诊疗装备研究中心长期联合培养研究生，共同承担了国家自然科学基金区域创新联合基金重大集成项目、国家重点研发计划等多项国家级课题。研究成果已适配于国产高端CT系列产品，实现了从算法到装备的实质性转化，产生了显著经济和社会效益。
+
+MIX‑AIAI Lab将持续面向国家重大需求，致力于为国产CT装备从“跟跑”迈向“领跑”提供关键算法支撑与人才储备。

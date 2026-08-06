@@ -11,6 +11,10 @@ import {
 import { onMount } from "svelte";
 import type { LIGHT_DARK_MODE } from "@/types/config.ts";
 
+// 显式声明组件 props（为空），使 astro check 能正确推导组件类型
+// biome-ignore lint/correctness/noUnusedVariables: required for type inference
+let {} = $props();
+
 const seq: LIGHT_DARK_MODE[] = [LIGHT_MODE, DARK_MODE, AUTO_MODE];
 let mode: LIGHT_DARK_MODE = $state(AUTO_MODE);
 

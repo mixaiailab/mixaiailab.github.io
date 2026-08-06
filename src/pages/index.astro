@@ -1,0 +1,75 @@
+---
+import { Icon } from "astro-icon/components";
+import MainGridLayout from "../layouts/MainGridLayout.astro";
+import { siteConfig } from "../config";
+---
+
+<MainGridLayout description={siteConfig.subtitle}>
+	<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+		<div class="card-base z-10 px-4 md:px-9 py-6 relative w-full ">
+
+			<!-- 顶部横幅（纯装饰背景，无交互） -->
+			<div class="w-full rounded-[18px] overflow-hidden border border-[var(--divider-color)] bg-white mb-6 md:mb-8 shadow-[0_18px_40px_-16px_rgba(22,22,22,0.28)] dark:shadow-[0_18px_40px_-16px_rgba(0,0,0,0.7)]" aria-hidden="true">
+				<img src="/images/home/banner.png" alt="" class="w-full h-[150px] sm:h-[200px] md:h-[240px] object-cover object-center" loading="eager" />
+			</div>
+
+			<section id="hero" class="min-h-[40vh] md:min-h-[56vh] flex flex-col justify-center relative overflow-hidden pt-4">
+				<div class="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
+					<div class="lg:col-span-7">
+						<h1 class="font-bold leading-[1.05] text-[var(--text-primary)] mb-6 opacity-0 animate-[fadeInUp_0.6s_ease-out_0.1s_forwards]"
+							style="font-size: clamp(1.7rem, 3.6vw, 3rem);"
+						>
+							引领<br/>
+							<span class="text-[var(--accent-blue)]">成像新时代<br/></span>
+							<br/>
+							<span class="text-[#8B1A1A] dark:text-[#D94848]">MiX-AIAI Lab<br/></span>
+							突破下一代医学成像设备壁垒<br/>
+						</h1>
+						<p class="text-base md:text-lg text-[var(--text-secondary)] max-w-2xl leading-relaxed mb-8 opacity-0 animate-[fadeInUp_0.6s_ease-out_0.2s_forwards]">
+							医学X射线前沿成像算法与装备实验室（Medical X-ray Advanced Imaging Algorithm and Instrumentation Laboratory，简称MIX‑AIAI Lab）由国家级领军学者马建华教授与南方医科大学曾栋副研究员共同领导，聚焦低剂量高分辨CT成像理论与算法，致力于突破临床辐射剂量与图像质量之间的矛盾，推动国产高端CT装备自主创新。
+						</p>
+						<div class="flex flex-wrap gap-4 opacity-0 animate-[fadeInUp_0.6s_ease-out_0.3s_forwards]">
+							<a href="/research/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[var(--accent-blue)] text-white font-medium hover:opacity-90 transition active:scale-95 text-sm md:text-base">
+								探索研究方向
+								<Icon name="material-symbols:arrow-forward-rounded" class="text-[1.25rem]" />
+							</a>
+							<a href="/outputs/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--divider-color)] text-[var(--text-primary)] font-medium hover:bg-[var(--card-bg)] transition active:scale-95 text-sm md:text-base">
+								查看最新成果
+								<Icon name="material-symbols:arrow-forward-rounded" class="text-[1.25rem]" />
+							</a>
+						</div>
+					</div>
+
+					<!-- CT 扫描示意图（来源图抠图前景） -->
+					<div class="lg:col-span-5 hidden lg:flex justify-center items-center opacity-0 animate-[fadeInUp_0.6s_ease-out_0.35s_forwards]">
+						<img src="/images/hero/ct-hero.png" alt="CT扫描设备示意图" class="w-full max-w-[560px] h-auto" loading="eager" />
+					</div>
+				</div>
+			</section>
+
+		</div>
+	</div>
+</MainGridLayout>
+
+<style is:global>
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#hero [style*="animation"] {
+		animation: none !important;
+		opacity: 1 !important;
+	}
+	.animate-bounce {
+		animation: none !important;
+	}
+}
+</style>

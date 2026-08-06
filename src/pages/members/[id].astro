@@ -1,0 +1,218 @@
+---
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { siteConfig } from "../../config";
+import { Icon } from "astro-icon/components";
+import { members } from "../../data/members";
+
+export function getStaticPaths() {
+	return members.map((member) => ({
+		params: { id: member.id },
+		props: { member },
+	}));
+}
+
+const { member } = Astro.props;
+const isFaculty = member.kind === "faculty";
+const accent = member.color ?? "var(--accent-blue)";
+const research = member.research?.trim() ?? "";
+
+const esc = (s: string) =>
+	String(s ?? "").replace(/[&<>"']/g, (c) =>
+		({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c] as string,
+	);
+
+const sections: { label: string; items?: string[]; numbered?: boolean }[] = [
+	{ label: "学习经历", items: member.education },
+	{ label: "工作经历", items: member.career },
+	{ label: "学术任职", items: member.appointments },
+	{ label: "主要获奖", items: member.awards },
+	{ label: "科研项目", items: member.projects },
+	{ label: "代表性论文", items: member.papers, numbered: true },
+];
+
+const profileSections = sections
+	.filter((s) => s.items && s.items.length > 0)
+	.map(
+		(s) =>
+			`<section class="profile-sec"><h2>${esc(s.label)}</h2>` +
+			`<ul class="${s.numbered ? "profile-papers" : ""}">` +
+			s.items!.map((it) => `<li>${esc(it)}</li>`).join("") +
+			`</ul></section>`,
+	)
+	.join("");
+---
+
+<MainGridLayout
+	title={`${member.name} - ${siteConfig.title}`}
+	description={member.bio ?? member.note ?? `${member.name} - ${siteConfig.title}`}
+>
+	<div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+		<div class="card-base z-10 px-4 md:px-9 py-6 relative w-full">
+
+			<a href="/members/" class="inline-flex items-center gap-1.5 text-sm font-mono text-[var(--text-secondary)] hover:text-[var(--accent-blue)] transition-colors mb-8">
+				<Icon name="material-symbols:arrow-back-rounded" class="text-[1.1rem]" />
+				返回成员列表
+			</a>
+
+			<header class="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start profile-head">
+				<div class="profile-photo">
+					{member.photo ? (
+						<img src={member.photo} alt={`${member.name}的照片`} />
+					) : (
+						<Icon name="material-symbols:person-rounded" class="text-[4.5rem]" />
+					)}
+				</div>
+				<div class="flex-1 min-w-0">
+					<div class="flex flex-wrap items-baseline gap-x-4 gap-y-1">
+						<h1 class="profile-name">{member.name}</h1>
+						<p class="profile-title">{member.title ?? member.degree ?? ""}</p>
+					</div>
+					<div class="profile-tags">
+						{isFaculty && <span class="profile-tag profile-tag--solid" style={{ backgroundColor: accent, color: "#fff" }}>PI</span>}
+						{member.degree && <span class="profile-tag">{member.degree}</span>}
+						{research ? <span class="profile-tag">{research}</span> : <span class="profile-tag profile-tag--dashed">研究方向 · 待补充</span>}
+					</div>
+					<div class="profile-contact">
+						{member.email && (
+							<a href={`mailto:${member.email}`}>
+								<Icon name="material-symbols:mail-outline-rounded" class="text-[1.1rem]" />
+								{member.email}
+							</a>
+						)}
+						{member.phone && (
+							<span>
+								<Icon name="material-symbols:call-outline-rounded" class="text-[1.1rem]" />
+								{member.phone}
+							</span>
+						)}
+					</div>
+				</div>
+			</header>
+
+			{member.bio && <p class="profile-bio">{member.bio}</p>}
+			{member.note && <div class="profile-note">{member.note}</div>}
+
+			<div class="profile-sections" set:html={profileSections}></div>
+
+			<footer class="profile-footer">MiX-AIAI Lab · 南方医科大学生物医学工程学院</footer>
+		</div>
+	</div>
+</MainGridLayout>
+
+<style is:global>
+.profile-head { margin-bottom: 1.5rem; }
+.profile-photo {
+	width: 148px;
+	aspect-ratio: 1;
+	flex-shrink: 0;
+	border-radius: 18px;
+	overflow: hidden;
+	border: 1px solid var(--divider-color);
+	background: linear-gradient(135deg, color-mix(in srgb, var(--accent-blue) 10%, transparent), color-mix(in srgb, var(--accent-blue-navy) 16%, transparent));
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: color-mix(in srgb, var(--accent-blue) 45%, transparent);
+}
+.profile-photo img { width: 100%; height: 100%; object-fit: cover; }
+.profile-photo svg { width: 4rem; height: 4rem; fill: currentColor; }
+.profile-name { font-size: clamp(1.6rem, 4vw, 2.2rem); font-weight: 700; color: var(--text-primary); line-height: 1.2; }
+.profile-title { font-family: "JetBrains Mono Variable", ui-monospace, monospace; font-size: 0.85rem; color: var(--accent-blue); }
+.profile-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-top: 0.85rem; }
+.profile-tag {
+	padding: 0.3rem 0.85rem;
+	border-radius: 999px;
+	font-size: 0.78rem;
+	border: 1px solid color-mix(in srgb, var(--accent-blue) 40%, transparent);
+	color: var(--accent-blue);
+}
+.profile-tag--solid { border: none; }
+.profile-tag--dashed { border-style: dashed; opacity: 0.75; }
+.profile-contact { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; margin-top: 1rem; }
+.profile-contact a, .profile-contact span {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.4rem;
+	font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+	font-size: 0.82rem;
+	color: var(--text-secondary);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+.profile-contact a:hover { color: var(--accent-blue); }
+.profile-contact svg { width: 1.05rem; height: 1.05rem; fill: currentColor; }
+.profile-bio {
+	margin-top: 1.6rem;
+	font-size: 0.95rem;
+	line-height: 1.85;
+	color: var(--text-secondary);
+}
+.profile-note {
+	margin-top: 1.6rem;
+	padding: 0.9rem 1.15rem;
+	border-radius: 14px;
+	border: 1px dashed color-mix(in srgb, var(--accent-blue) 35%, transparent);
+	background: color-mix(in srgb, var(--accent-blue) 6%, transparent);
+	color: var(--text-secondary);
+	font-size: 0.88rem;
+	line-height: 1.75;
+}
+.profile-sections { margin-top: 2.2rem; display: grid; gap: 1.8rem; }
+.profile-sec h2 {
+	font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+	font-size: 0.8rem;
+	letter-spacing: 0.14em;
+	color: var(--text-primary);
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	margin-bottom: 0.75rem;
+}
+.profile-sec h2::before { content: ""; width: 4px; height: 14px; border-radius: 999px; background: var(--accent-blue); }
+.profile-sec ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.45rem; }
+.profile-sec li {
+	position: relative;
+	padding-left: 1.05rem;
+	font-size: 0.88rem;
+	line-height: 1.75;
+	color: var(--text-secondary);
+}
+.profile-sec li::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	top: 0.62em;
+	width: 5px;
+	height: 5px;
+	border-radius: 999px;
+	background: var(--accent-blue-light);
+}
+.profile-papers { counter-reset: paper; }
+.profile-papers li { counter-increment: paper; padding-left: 2.2rem; }
+.profile-papers li::before {
+	content: "[" counter(paper) "]";
+	left: 0;
+	top: 0;
+	width: auto;
+	height: auto;
+	border-radius: 0;
+	background: none;
+	font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+	font-size: 0.75rem;
+	color: var(--accent-blue);
+}
+.profile-footer {
+	margin-top: 2.4rem;
+	padding-top: 1.1rem;
+	border-top: 1px solid var(--divider-color);
+	font-size: 0.78rem;
+	font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+	color: var(--text-secondary);
+	opacity: 0.7;
+}
+@media (max-width: 560px) {
+	.profile-head { align-items: center; text-align: center; }
+	.profile-photo { width: 128px; }
+	.profile-tags, .profile-contact { justify-content: center; }
+}
+</style>

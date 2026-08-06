@@ -1,0 +1,90 @@
+---
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { siteConfig } from "../../config";
+
+const albums = [
+  {
+    title: "Fully 3D 2025 上海会议",
+    date: "2025.05",
+    desc: "生物医学工程学院团队参加Fully 3D 2025国际会议，获5项Travel Award",
+    images: ["F3D/01.jpg", "F3D/02.jpg", "F3D/03.jpg"],
+    barColor: "var(--accent-blue-deep)",
+  },
+  {
+    title: "上海学术交流",
+    date: "2025.05",
+    desc: "与会期间与国内外同行进行学术交流",
+    // TODO: 团体照待补——真实照片放入 public/images/activities/shanghai/ 后加回 images 数组
+    images: ["shanghai/02.jpg"],
+    barColor: "var(--accent-blue)",
+  },
+  {
+    title: "白云山团建",
+    date: "2025",
+    desc: "课题组白云山团建活动",
+    images: ["baiyunshan/01.jpg", "baiyunshan/02.jpg"],
+    barColor: "var(--accent-blue-light)",
+  },
+  {
+    title: "近期活动掠影",
+    date: "2026.08",
+    desc: "课题组近期科研、学术交流与团队活动照片。",
+    images: [
+      "2026-08/微信图片_20260806152108_1230_3.jpg",
+      "2026-08/微信图片_20260806152225_1232_3.jpg",
+      "2026-08/微信图片_20260806152632_1237_3.jpg",
+      "2026-08/微信图片_20260806152958_1240_3.jpg",
+      "2026-08/微信图片_20260806153000_1241_3.jpg",
+      "2026-08/微信图片_20260806153114_1245_3.jpg",
+      "2026-08/微信图片_20260806153543_1248_3.jpg",
+      "2026-08/微信图片_20260806153652_1250_3.jpg",
+      "2026-08/微信图片_20260806153653_1251_3.jpg",
+      "2026-08/微信图片_20260806153912_1255_3.jpg",
+      "2026-08/微信图片_20260806154100_1262_3.jpg",
+      "2026-08/微信图片_20260806154310_1264_3.jpg",
+      "2026-08/微信图片_20260806154311_1265_3.jpg",
+      "2026-08/微信图片_20260806154437_1266_3.jpg",
+    ],
+    barColor: "var(--accent-blue-deep)",
+  },
+];
+---
+
+<MainGridLayout title={`活动记录 - ${siteConfig.title}`} description="科研活动、学术会议、调研交流与团队建设。">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 md:px-9 py-6 relative w-full ">
+
+  <section class="py-16 md:py-24">
+    <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 活动</div>
+    <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">活动记录</h1>
+    <p class="text-[var(--text-secondary)] text-lg md:text-xl max-w-2xl leading-relaxed mb-16">
+      科研活动、学术会议、调研交流与团队建设。
+    </p>
+  </section>
+
+  <section class="pb-24 space-y-16">
+    {albums.map((album) => (
+      <div>
+        <div class="flex items-baseline justify-between mb-6">
+          <div>
+            <h2 class="text-2xl font-bold text-[var(--text-primary)] flex items-center gap-3">
+              <span class="w-1 h-6 rounded-full" style={`background-color: ${album.barColor}`}></span>
+              {album.title}
+            </h2>
+            <p class="text-[var(--text-secondary)] mt-1">{album.desc}</p>
+          </div>
+          <span class="text-sm font-mono text-[var(--text-secondary)]">{album.date}</span>
+        </div>
+        <div class="columns-2 md:columns-3 gap-4">
+          {album.images.map((img) => (
+            <div class="zoom-gallery cursor-zoom-in mb-4 break-inside-avoid rounded-[14px] overflow-hidden bg-[var(--card-bg)] border border-[var(--divider-color)] group hover:border-[var(--accent-blue)] transition-all duration-300">
+              <img src={"/images/activities/" + img} alt={album.title} class="w-full h-auto object-cover group-hover:scale-[1.02] transition-transform duration-500" loading="lazy" />
+            </div>
+          ))}
+        </div>
+      </div>
+    ))}
+  </section>
+        </div>
+    </div>
+</MainGridLayout>

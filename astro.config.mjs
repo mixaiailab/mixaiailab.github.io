@@ -26,7 +26,8 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 // https://astro.build/config
 export default defineConfig({
-	site: "https://fuwari.vercel.app/",
+	// TODO(必填): 部署前替换为实验室正式域名 —— 该值决定 sitemap / RSS / OpenGraph 中的 canonical URL
+	site: "https://mix-aiailab.example.com/",
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
@@ -49,7 +50,6 @@ export default defineConfig({
 		}),
 		icon({
 			include: {
-				"preprocess: vitePreprocess(),": ["*"],
 				"fa6-brands": ["*"],
 				"fa6-regular": ["*"],
 				"fa6-solid": ["*"],

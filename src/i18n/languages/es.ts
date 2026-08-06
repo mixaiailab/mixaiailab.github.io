@@ -35,4 +35,11 @@ export const es: Translation = {
 	[Key.author]: "Autor",
 	[Key.publishedAt]: "Publicado el",
 	[Key.license]: "Licencia",
+
+	// TODO: navigation terms below pending localization (English fallback for now)
+	[Key.news]: "News",
+	[Key.outputs]: "Outputs",
+	[Key.research]: "Research",
+	[Key.members]: "Members",
+	[Key.activities]: "Activities",
 };

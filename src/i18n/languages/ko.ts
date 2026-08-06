@@ -35,4 +35,11 @@ export const ko: Translation = {
 	[Key.author]: "저자",
 	[Key.publishedAt]: "게시일",
 	[Key.license]: "라이선스",
+
+	// TODO: navigation terms below pending localization (English fallback for now)
+	[Key.news]: "News",
+	[Key.outputs]: "Outputs",
+	[Key.research]: "Research",
+	[Key.members]: "Members",
+	[Key.activities]: "Activities",
 };

@@ -1,0 +1,121 @@
+---
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { siteConfig } from "../../config";
+import { Icon } from "astro-icon/components";
+
+const directions = [
+  {
+    id: "01",
+    title: "高端CT成像理论与算法",
+    color: "var(--accent-blue)",
+    desc: "提出非直接对数校正可学习重建、时空异质建模流变重建等创新框架，实现从投影域到图像域的全链路建模优化。",
+    keywords: ["可学习重建", "时空建模", "流变重建", "迭代重建"],
+    image: "/images/projects/directions/high-end-ct.png",
+  },
+  {
+    id: "02",
+    title: "低剂量CT智能成像",
+    color: "var(--accent-blue-light)",
+    desc: "探索深度学习与经典算法融合的高性能重建技术，突破临床辐射剂量与图像质量之间的核心矛盾。",
+    keywords: ["深度学习", "低剂量", "图像去噪", "稀疏重建"],
+    image: "/images/projects/directions/low-dose-ct.png",
+  },
+  {
+    id: "03",
+    title: "光子计数与能谱CT成像",
+    color: "var(--accent-blue-navy)",
+    desc: "研究光子计数探测器物理响应建模、能谱基物质分解、虚拟单能级图像生成，推动新一代CT技术发展。",
+    keywords: ["光子计数", "能谱CT", "物质分解", "探测器建模"],
+    image: "/images/projects/directions/preclinical-pcct.png",
+  },
+  {
+    id: "04",
+    title: "跨机型与多模态成像应用",
+    color: "var(--accent-blue-deep)",
+    desc: "研究可迁移CT成像模型，探索联邦学习跨机构协作、灌注CT及分布式微剂量CT等前沿方向。",
+    keywords: ["联邦学习", "跨机型", "灌注CT", "临床转化"],
+    image: "/images/projects/directions/perfusion-phantom.png",
+  },
+];
+
+const equipmentList = [
+  { name: "东软准光子CT", file: "neusoft-pcct.jpg" },
+  { name: "联影 u760 CT", file: "uni-uv760.jpg" },
+  { name: "光子计数CT", file: "pcct1.jpg" },
+  { name: "光子计数CT（另一视角）", file: "pcct2.jpg" },
+  { name: "小动物光子计数成像 1", file: "small-animal-pcct1.jpg" },
+  { name: "小动物光子计数成像 2", file: "small-animal-pcct2.jpg" },
+  { name: "小动物光子计数成像 3", file: "small-animal-pcct3.jpg" },
+  { name: "定量体膜 1", file: "phantom1.jpg" },
+  { name: "定量体膜 2", file: "phantom2.png" },
+  { name: "项目现场照片", file: "project-photo.jpg" },
+];
+---
+
+<MainGridLayout title={`研究方向 - ${siteConfig.title}`} description="MiX-AIAI Lab 聚焦医学X射线前沿成像算法与装备，覆盖从物理建模到临床转化的全链条研究。">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 md:px-9 py-6 relative w-full ">
+
+  <section class="py-16 md:py-24">
+    <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 项目与方向</div>
+    <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">研究方向</h1>
+    <p class="text-[var(--text-secondary)] text-lg md:text-xl max-w-3xl leading-relaxed mb-16">
+      MiX-AIAI Lab 聚焦医学X射线前沿成像算法与装备，覆盖从物理建模到临床转化的全链条研究。
+    </p>
+  </section>
+
+  <!-- 研究方向 -->
+  <section class="pb-24 space-y-16">
+    {directions.map((d, i) => (
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div class:list={["lg:col-span-6", i % 2 === 1 ? "lg:order-2" : ""]}>
+          <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center font-mono font-bold text-lg" style={{backgroundColor: d.color + "15", color: d.color}}>
+              {d.id}
+            </div>
+            <h2 class="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">{d.title}</h2>
+          </div>
+          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-4">{d.desc}</p>
+          <div class="flex flex-wrap gap-2">
+            {d.keywords.map(kw => (
+              <span class="px-3 py-1 rounded-full text-xs font-mono border border-[var(--divider-color)] text-[var(--text-secondary)]">{kw}</span>
+            ))}
+          </div>
+        </div>
+        <div class:list={["lg:col-span-6", i % 2 === 1 ? "lg:order-1" : ""]}>
+          {d.image ? (
+            <div class="zoom-gallery cursor-zoom-in rounded-[18px] overflow-hidden border border-[var(--divider-color)] bg-[var(--card-bg)]">
+              <img src={d.image} alt={d.title} class="w-full h-auto object-cover" />
+            </div>
+          ) : (
+            <div class="aspect-[4/3] rounded-[18px] bg-gradient-to-br from-[var(--accent-blue)]/5 to-[var(--accent-blue-navy)]/5 border border-[var(--divider-color)] flex items-center justify-center">
+              <Icon name="material-symbols:image-outline-rounded" class="text-[4rem] text-[var(--text-secondary)]/20" />
+            </div>
+          )}
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- 科研装备 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue-deep)] rounded-full"></span>
+      科研装备
+    </h2>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+      {equipmentList.map((eq) => (
+        <div class="bg-[var(--card-bg)] rounded-[12px] overflow-hidden border border-[var(--divider-color)] group hover:border-[var(--accent-blue)] transition-all duration-300">
+          <div class="zoom-gallery cursor-zoom-in aspect-[4/3] bg-[var(--page-bg)] overflow-hidden">
+            <img src={"/images/projects/equipment/" + eq.file} alt={eq.name} class="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500" />
+          </div>
+          <div class="p-3">
+            <p class="text-sm font-medium text-[var(--text-primary)] text-center">{eq.name}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+        </div>
+    </div>
+</MainGridLayout>

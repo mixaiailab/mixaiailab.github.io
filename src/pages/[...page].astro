@@ -1,5 +1,6 @@
 ---
-import type { GetStaticPaths } from "astro";
+import type { GetStaticPaths, Page } from "astro";
+import type { CollectionEntry } from "astro:content";
 import Pagination from "../components/control/Pagination.astro";
 import PostPage from "../components/PostPage.astro";
 import { PAGE_SIZE } from "../constants/constants";
@@ -8,11 +9,17 @@ import { getSortedPosts } from "../utils/content-utils";
 
 export const getStaticPaths = (async ({ paginate }) => {
 	const allBlogPosts = await getSortedPosts();
-	return paginate(allBlogPosts, { pageSize: PAGE_SIZE });
+	const pages = paginate(allBlogPosts, { pageSize: PAGE_SIZE });
+	return pages.map((page, i) => ({
+		params: { page: i === 0 ? undefined : String(i + 1) },
+		props: { page },
+	}));
 }) satisfies GetStaticPaths;
-// https://github.com/withastro/astro/issues/6507#issuecomment-1489916992
 
-const { page } = Astro.props;
+interface Props {
+	page: Page<CollectionEntry<"posts">>;
+}
+const { page } = Astro.props as Props;
 
 const len = page.data.length;
 ---

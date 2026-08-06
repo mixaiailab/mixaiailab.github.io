@@ -22,7 +22,8 @@ export async function GET(context: APIContext) {
 	return rss({
 		title: siteConfig.title,
 		description: siteConfig.subtitle || "No description",
-		site: context.site ?? "https://fuwari.vercel.app",
+		// context.site 来自 astro.config.mjs 的 site 字段（部署前须替换为正式域名）
+		site: context.site ?? "https://mix-aiailab.example.com",
 		items: blog.map((post) => {
 			const content =
 				typeof post.body === "string" ? post.body : String(post.body || "");

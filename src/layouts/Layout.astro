@@ -1,9 +1,8 @@
 ---
-import "@fontsource/roboto/400.css";
-import "@fontsource/roboto/500.css";
-import "@fontsource/roboto/700.css";
+import "@fontsource-variable/noto-sans-sc";
 
 import ConfigCarrier from "@components/ConfigCarrier.astro";
+import GlobalStyles from "@components/GlobalStyles.astro";
 import { profileConfig, siteConfig } from "@/config";
 import {
 	AUTO_MODE,
@@ -38,6 +37,7 @@ const isHomePage = pathsEqual(Astro.url.pathname, url("/"));
 // defines global css variables
 // why doing this in Layout instead of GlobalStyles: https://github.com/withastro/astro/issues/6728#issuecomment-1502203757
 const configHue = siteConfig.themeColor.hue;
+const themeFixed = Boolean(siteConfig.themeColor.fixed);
 if (!banner || typeof banner !== "string" || banner.trim() === "") {
 	banner = siteConfig.banner.src;
 }
@@ -77,7 +77,7 @@ const bannerOffset =
 	  data-overlayscrollbars-initialize
 >
 	<head>
-
+		<GlobalStyles />
 		<title>{pageTitle}</title>
 
 		<meta charset="UTF-8" />
@@ -110,7 +110,7 @@ const bannerOffset =
 		))}
 
 		<!-- Set the theme before the page is rendered to avoid a flash -->
-		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue}}>
+		<script is:inline define:vars={{DEFAULT_THEME, LIGHT_MODE, DARK_MODE, AUTO_MODE, BANNER_HEIGHT_EXTEND, PAGE_WIDTH, configHue, themeFixed}}>
 			// Load the theme from local storage
 			const theme = localStorage.getItem('theme') || DEFAULT_THEME;
 			switch (theme) {
@@ -128,8 +128,10 @@ const bannerOffset =
 					}
 			}
 
-			// Load the hue from local storage
-			const hue = localStorage.getItem('hue') || configHue;
+			// Load the hue from local storage — unless the theme color is fixed in
+			// config, in which case a stale stored hue (e.g. an old green value)
+			// must never override the configured blue.
+			const hue = themeFixed ? configHue : (localStorage.getItem('hue') || configHue);
 			document.documentElement.style.setProperty('--hue', hue);
 
 			// calculate the --banner-height-extend, which needs to be a multiple of 4 to avoid blurry text
@@ -261,6 +263,7 @@ const bannerEnabled = !!document.getElementById('banner-wrapper')
 function setClickOutsideToClose(panel: string, ignores: string[]) {
 	document.addEventListener("click", event => {
 		let panelDom = document.getElementById(panel);
+		if (!panelDom) return;
 		let tDom = event.target;
 		if (!(tDom instanceof Node)) return;		// Ensure the event target is an HTML Node
 		for (let ig of ignores) {
@@ -269,7 +272,7 @@ function setClickOutsideToClose(panel: string, ignores: string[]) {
 				return;
 			}
 		}
-		panelDom!.classList.add("float-panel-closed");
+		panelDom.classList.add("float-panel-closed");
 	});
 }
 setClickOutsideToClose("display-setting", ["display-setting", "display-settings-switch"])
@@ -513,7 +516,7 @@ let pswp = import("photoswipe")
 
 function createPhotoSwipe() {
 	lightbox = new PhotoSwipeLightbox({
-		gallery: ".custom-md img, #post-cover img",
+		gallery: ".custom-md img, #post-cover img, .zoom-gallery img",
 		pswpModule: () => pswp,
 		closeSVG: '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M480-424 284-228q-11 11-28 11t-28-11q-11-11-11-28t11-28l196-196-196-196q-11-11-11-28t11-28q11-11 28-11t28 11l196 196 196-196q11-11 28-11t28 11q11 11 11 28t-11 28L536-480l196 196q11 11 11 28t-11 28q-11 11-28 11t-28-11L480-424Z"/></svg>',
 		zoomSVG: '<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M340-540h-40q-17 0-28.5-11.5T260-580q0-17 11.5-28.5T300-620h40v-40q0-17 11.5-28.5T380-700q17 0 28.5 11.5T420-660v40h40q17 0 28.5 11.5T500-580q0 17-11.5 28.5T460-540h-40v40q0 17-11.5 28.5T380-460q-17 0-28.5-11.5T340-500v-40Zm40 220q-109 0-184.5-75.5T120-580q0-109 75.5-184.5T380-840q109 0 184.5 75.5T640-580q0 44-14 83t-38 69l224 224q11 11 11 28t-11 28q-11 11-28 11t-28-11L532-372q-30 24-69 38t-83 14Zm0-80q75 0 127.5-52.5T560-580q0-75-52.5-127.5T380-760q-75 0-127.5 52.5T200-580q0 75 52.5 127.5T380-400Z"/></svg>',
@@ -564,4 +567,21 @@ if (window.swup) {
 } else {
 	document.addEventListener("swup:enable", setup)
 }
+</script>
+
+<script>
+// 成员页硕士滑动行：使用事件委托，保证 Swup 客户端切换页面后仍可用。
+document.addEventListener("click", (event) => {
+	const btn = (event.target as HTMLElement | null)?.closest?.("[data-master-scroll]") as HTMLElement | null;
+	if (!btn) return;
+	const target = btn.getAttribute("data-master-scroll");
+	const dir = Number(btn.getAttribute("data-master-scroll-dir") || "1");
+	const scrollers =
+		target === "all"
+			? document.querySelectorAll('[id^="master-scroll-"]')
+			: document.querySelectorAll(`#master-scroll-${target}`);
+	scrollers.forEach((el) => {
+		el.scrollBy({ left: dir * Math.max(el.clientWidth * 0.8, 240), behavior: "smooth" });
+	});
+});
 </script>

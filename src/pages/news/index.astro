@@ -1,0 +1,61 @@
+---
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { siteConfig } from "../../config";
+import { getCollection } from "astro:content";
+import { getPostUrlBySlug } from "../../utils/url-utils";
+import { Icon } from "astro-icon/components";
+
+// Get all posts sorted by date
+const allPosts = await getCollection("posts", ({ data }) => {
+  return data.hidden !== true && (import.meta.env.PROD ? data.draft !== true : true);
+});
+const sortedPosts = allPosts.sort(
+  (a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime()
+);
+
+function formatDate(date: string | number | Date) {
+  const d = new Date(date);
+  return d.getFullYear() + '.' + String(d.getMonth()+1).padStart(2,'0') + '.' + String(d.getDate()).padStart(2,'0');
+}
+---
+
+<MainGridLayout title={`新闻动态 - ${siteConfig.title}`} description="课题组的通知、进展、招生、学术交流与成果发布。">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 md:px-9 py-6 relative w-full ">
+
+  <section class="py-16 md:py-24">
+    <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 新闻</div>
+    <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">新闻动态</h1>
+    <p class="text-[var(--text-secondary)] text-lg md:text-xl max-w-2xl leading-relaxed mb-16">
+      课题组的通知、进展、招生、学术交流与成果发布。
+    </p>
+  </section>
+
+  <div class="space-y-6 pb-24">
+    {sortedPosts.map((post) => (
+      <a href={getPostUrlBySlug(post.slug)}
+        class="block bg-[var(--card-bg)] rounded-[18px] p-6 md:p-8 border border-[var(--divider-color)] hover:border-[var(--accent-blue)] transition-all duration-300 group"
+      >
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="flex-1 min-w-0">
+            <div class="flex items-center gap-3 mb-2">
+              {post.data.category && (
+                <span class="px-3 py-1 rounded-full text-xs font-mono bg-[var(--accent-blue)]/10 text-[var(--accent-blue)]">{post.data.category}</span>
+              )}
+              <span class="text-xs font-mono text-[var(--text-secondary)]">{formatDate(post.data.published)}</span>
+            </div>
+            <h2 class="text-xl md:text-2xl font-bold text-[var(--text-primary)] group-hover:text-[var(--accent-blue)] transition-colors">
+              {post.data.title}
+            </h2>
+            {post.data.description && (
+              <p class="text-[var(--text-secondary)] mt-2 line-clamp-2">{post.data.description}</p>
+            )}
+          </div>
+          <Icon name="material-symbols:chevron-right-rounded" class="text-[2rem] text-[var(--text-secondary)] group-hover:text-[var(--accent-blue)] transition-all group-hover:translate-x-1 shrink-0" />
+        </div>
+      </a>
+    ))}
+  </div>
+        </div>
+    </div>
+</MainGridLayout>

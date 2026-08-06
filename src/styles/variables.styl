@@ -24,8 +24,21 @@ define(vars)
 
 define({
   --primary: oklch(0.70 0.14 var(--hue)) oklch(0.75 0.14 var(--hue))
-  --page-bg: oklch(0.95 0.01 var(--hue)) oklch(0.16 0.014 var(--hue))
-  --card-bg: white oklch(0.23 0.015 var(--hue))
+  --page-bg: #FFFFFF #101111
+  --card-bg: #F4F5F7 #181A1A
+
+  // Design system colors (hex-based, not hue-dependent)
+  --text-primary: #161616 #F3F1EB
+  --text-secondary: #66645F #A4A39E
+  --divider-color: rgba(22,22,22,0.12) rgba(255,255,255,0.12)
+  // Design spec 2026-07: single blue accent family. All former multi-hue accents
+  // (--accent-teal #20BFA9, --accent-coral, --accent-yellow, --accent-purple) were
+  // retired; elements are now differentiated by BLUE LIGHT/DEPTH SHADES only.
+  // Do not reintroduce any non-blue accent hue.
+  --accent-blue: #315CFF #4A7AFF              // 主蓝（基准）
+  --accent-blue-light: #85A9FF #A6C3FF        // 浅蓝（原黄色位：次级点缀）
+  --accent-blue-deep: #1E3FA9 #3560E8         // 深蓝（原珊瑚位：强调点缀）
+  --accent-blue-navy: #142B73 #7E9CFF         // 藏蓝（原紫色位：装饰/渐变端点）
 
   --btn-content: oklch(0.55 0.12 var(--hue)) oklch(0.75 0.1 var(--hue))
 
@@ -84,7 +97,7 @@ define({
   --display-light-icon: 1 0
   --display-dark-icon: 0 1
 
-  --admonitions-color-tip: oklch(0.7 0.14 180) oklch(0.75 0.14 180)
+  --admonitions-color-tip: oklch(0.7 0.14 250) oklch(0.75 0.14 250)
   --admonitions-color-note: oklch(0.7 0.14 250) oklch(0.75 0.14 250)
   --admonitions-color-important: oklch(0.7 0.14 310) oklch(0.75 0.14 310)
   --admonitions-color-warning: oklch(0.7 0.14 60) oklch(0.75 0.14 60)

@@ -35,4 +35,11 @@ export const th: Translation = {
 	[Key.author]: "ผู้เขียน",
 	[Key.publishedAt]: "เผยแพร่เมื่อ",
 	[Key.license]: "สัญญาอนุญาต",
+
+	// TODO: navigation terms below pending localization (English fallback for now)
+	[Key.news]: "News",
+	[Key.outputs]: "Outputs",
+	[Key.research]: "Research",
+	[Key.members]: "Members",
+	[Key.activities]: "Activities",
 };

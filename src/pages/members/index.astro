@@ -1,0 +1,237 @@
+---
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { siteConfig } from "../../config";
+import { Icon } from "astro-icon/components";
+import { faculty, phdStudents, masterStudentGroups, graduates } from "../../data/members";
+
+// 防御：避免模块热更新中间态导致某个数组为 undefined 时页面崩溃（Cannot read 'map' of undefined）
+const facultyList = faculty ?? [];
+const phdList = phdStudents ?? [];
+const masterGroups = masterStudentGroups ?? [];
+const graduateList = graduates ?? [];
+
+
+---
+
+<MainGridLayout title={`团队成员 - ${siteConfig.title}`} description="课题组教师、研究生与毕业生">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 md:px-9 py-6 relative w-full ">
+
+  <section class="py-16 md:py-24">
+    <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 成员</div>
+    <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">团队成员</h1>
+    <p class="text-[var(--text-secondary)] text-lg md:text-xl max-w-2xl leading-relaxed mb-16">
+      一支由教授、副教授、副研究员及若干研究生组成的跨学科研究团队，致力于推动CT成像技术的边界。
+      点击名片可查看完整简历。
+    </p>
+  </section>
+
+  <!-- 教师（可点击名片，布局保持左右交替） -->
+  <section class="pb-24 space-y-12">
+    {facultyList.map((f, i) => (
+      <div
+        style={{ "--card-accent": f.color }}
+        class:list={[
+          "group member-card grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-10 items-start p-5 md:p-8",
+          i % 2 === 1 ? "md:[direction:rtl]" : "",
+        ]}
+      >
+        <a href={`/members/${f.id}/`} aria-label={`查看${f.name}的完整简介`} class="absolute inset-0 z-[1] rounded-[inherit]"></a>
+<div class="md:col-span-4 md:[direction:ltr]">
+          <div class="relative aspect-square rounded-[20px] overflow-hidden bg-gradient-to-br from-[var(--card-accent)]/10 via-transparent to-[var(--card-accent)]/25 border border-[var(--divider-color)] transition-colors duration-300 group-hover:border-[var(--card-accent)]">
+            <div class="w-full h-full flex items-center justify-center">
+              <Icon name="material-symbols:person-rounded" class="text-[5rem] text-[var(--accent-blue)]/25" />
+            </div>
+            <!-- 悬停提示 -->
+            <div class="absolute inset-0 flex items-end justify-center pb-4 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/[0.92] text-[#161616] text-xs font-medium backdrop-blur-sm">
+                点击名片查看完整简历
+                <Icon name="material-symbols:arrow-forward-rounded" class="text-[1rem]" />
+              </span>
+            </div>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider text-white" style={{ backgroundColor: f.color }}>PI</span>
+          </div>
+        </div>
+
+        <div class="md:col-span-8 md:[direction:ltr]">
+          <div class="flex flex-wrap items-baseline gap-x-4 gap-y-1 mb-1">
+            <h2 class="text-3xl font-bold text-[var(--text-primary)]">{f.name}</h2>
+            <p class="text-[var(--accent-blue)] font-mono text-sm">{f.title}</p>
+          </div>
+
+          <div class="space-y-4 text-[var(--text-secondary)] leading-relaxed">
+            <p class="line-clamp-3">{f.bio}</p>
+
+            <div class="flex flex-wrap items-center gap-x-5 gap-y-1.5">
+              <a href={`mailto:${f.email}`} class="relative z-[2] text-sm text-[var(--text-primary)] font-medium inline-flex items-center gap-1.5 hover:text-[var(--accent-blue)] transition-colors">
+                <Icon name="material-symbols:mail-outline-rounded" class="text-[1.1rem] text-[var(--text-secondary)]" />
+                {f.email}
+              </a>
+              {f.phone && (
+                <span class="text-sm text-[var(--text-primary)] font-medium inline-flex items-center gap-1.5">
+                  <Icon name="material-symbols:call-outline-rounded" class="text-[1.1rem] text-[var(--text-secondary)]" />
+                  {f.phone}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <h4 class="text-sm font-mono tracking-wider text-[var(--text-primary)] mb-2">研究方向</h4>
+              <span class="px-4 py-1.5 rounded-full text-sm border" style={{ borderColor: f.color + "45", color: f.color }}>{f.research}</span>
+            </div>
+
+            <div>
+              <h4 class="text-sm font-mono tracking-wider text-[var(--text-primary)] mb-2">主要获奖</h4>
+              <ul class="space-y-1">
+                {(f.awards ?? []).map(a => (
+                  <li class="text-sm flex items-start gap-2">
+                    <span class="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: f.color }}></span>
+                    {a}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div class="pt-1 flex items-center gap-1.5 text-sm font-mono text-[var(--accent-blue)]">
+              <span>查看完整简历</span>
+              <Icon name="material-symbols:arrow-forward-rounded" class="text-[1.1rem] transition-transform duration-300 group-hover:translate-x-1" />
+            </div>
+          </div>
+        </div>
+      </div>
+    ))}
+  </section>
+
+  <!-- 学生 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue)] rounded-full"></span>
+      研究生
+    </h2>
+    <p class="text-[var(--text-secondary)] mb-10">课题组目前有博士生和硕士生若干名。点击名片查看成员信息，照片与研究方向待补充。</p>
+
+    <h3 class="text-lg font-bold text-[var(--text-primary)] mb-5">博士研究生</h3>
+    <div class="flex flex-wrap gap-6 mb-12">
+      {phdList.map(s => (
+        <div
+          style={{ "--card-accent": "var(--accent-blue)" }}
+          class="group member-card member-card--sm w-44 p-3.5"
+        >
+          <a href={`/members/${s.id}/`} aria-label={`查看${s.name}的信息`} class="absolute inset-0 z-[1] rounded-[inherit]"></a>
+<div class="relative aspect-[4/5] rounded-[14px] overflow-hidden bg-gradient-to-br from-[var(--accent-blue)]/10 to-[var(--accent-blue-navy)]/15 border border-[var(--divider-color)] flex items-center justify-center transition-colors duration-300 group-hover:border-[var(--card-accent)]">
+            {s.photo ? (
+              <img src={s.photo} alt={`${s.name}的照片`} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+            ) : (
+              <Icon name="material-symbols:person-rounded" class="text-[3.2rem] text-[var(--accent-blue)]/30" />
+            )}
+            <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-mono text-white bg-[var(--accent-blue)]">博士</span>
+          </div>
+          <p class="mt-3 text-sm font-bold text-[var(--text-primary)]">{s.name}</p>
+          <p class="mt-1.5 text-[10px] font-mono px-2 py-0.5 inline-block rounded-full border border-dashed border-[var(--accent-blue)]/40 text-[var(--accent-blue)]">
+            {s.research ? s.research : "研究方向 · 待补充"}
+          </p>
+          <a href={`mailto:${s.email}`} class="relative z-[2] mt-2 text-[10px] font-mono text-[var(--text-secondary)] inline-flex items-center gap-1 hover:text-[var(--accent-blue)] transition-colors">
+            <Icon name="material-symbols:mail-outline-rounded" class="text-[0.85rem]" />
+            {s.email}
+          </a>
+        </div>
+      ))}
+    </div>
+
+    <h3 class="text-lg font-bold text-[var(--text-primary)] mb-5 flex items-center gap-3">
+      硕士研究生
+      <span class="text-xs font-mono font-normal text-[var(--text-secondary)]">左右滑动查看</span>
+    </h3>
+    {masterGroups.map((group, gi) => (
+      <div class="relative mb-8 last:mb-12">
+        <div id={`master-scroll-${gi}`} class="flex gap-6 md:gap-8 overflow-x-auto scroll-smooth snap-x snap-mandatory pb-4 px-8 md:px-12 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {group.map(s => (
+            <div
+              style={{ "--card-accent": "var(--accent-blue-light)" }}
+              class="group member-card member-card--sm w-40 md:w-56 p-3 shrink-0 snap-start"
+            >
+              <a href={`/members/${s.id}/`} aria-label={`查看${s.name}的信息`} class="absolute inset-0 z-[1] rounded-[inherit]"></a>
+<div class="relative aspect-[4/5] rounded-[12px] overflow-hidden bg-gradient-to-br from-[var(--accent-blue-light)]/10 to-[var(--accent-blue)]/15 border border-[var(--divider-color)] flex items-center justify-center transition-colors duration-300 group-hover:border-[var(--card-accent)]">
+                {s.photo ? (
+                  <img src={s.photo} alt={`${s.name}的照片`} class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-[1.05]" />
+                ) : (
+                  <Icon name="material-symbols:person-rounded" class="text-[2.6rem] text-[var(--accent-blue-light)]/45" />
+                )}
+                <span class="absolute top-2 left-2 px-2 py-0.5 rounded-full text-[10px] font-mono text-white bg-[var(--accent-blue-light)]">硕士</span>
+              </div>
+              <p class="mt-2.5 text-xs font-bold text-[var(--text-primary)]">{s.name}</p>
+              <p class="mt-1 text-[10px] font-mono px-2 py-0.5 inline-block rounded-full border border-dashed border-[var(--accent-blue-light)]/60 text-[var(--accent-blue-deep)]">
+                {s.research ? s.research : "研究方向 · 待补充"}
+              </p>
+              <a href={`mailto:${s.email}`} class="relative z-[2] mt-1.5 text-[10px] font-mono text-[var(--text-secondary)] inline-flex items-center gap-1 hover:text-[var(--accent-blue)] transition-colors">
+                <Icon name="material-symbols:mail-outline-rounded" class="text-[0.85rem]" />
+                {s.email}
+              </a>
+            </div>
+          ))}
+        </div>
+        <button type="button" aria-label={`第${gi + 1}行向左滚动`} data-master-scroll={gi} data-master-scroll-dir="-1" class="absolute left-2 top-[42%] -translate-y-1/2 w-9 h-9 rounded-full bg-[var(--card-bg)] border border-[var(--divider-color)] shadow-[0_8px_20px_-8px_rgba(22,22,22,0.25)] flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--accent-blue)] hover:border-[var(--accent-blue)] transition-colors z-[2]">
+          <Icon name="material-symbols:chevron-left-rounded" class="text-[1.25rem]" />
+        </button>
+        <button type="button" aria-label={`第${gi + 1}行向右滚动`} data-master-scroll={gi} data-master-scroll-dir="1" class="absolute right-2 top-[42%] -translate-y-1/2 w-9 h-9 rounded-full bg-[var(--card-bg)] border border-[var(--divider-color)] shadow-[0_8px_20px_-8px_rgba(22,22,22,0.25)] flex items-center justify-center text-[var(--text-secondary)] hover:text-[var(--accent-blue)] hover:border-[var(--accent-blue)] transition-colors z-[2]">
+          <Icon name="material-symbols:chevron-right-rounded" class="text-[1.25rem]" />
+        </button>
+      </div>
+    ))}
+
+    <div class="bg-[var(--card-bg)] rounded-[18px] p-8 border border-dashed border-[var(--accent-blue)]/30 text-center">
+      <Icon name="material-symbols:groups-rounded" class="text-[3rem] text-[var(--accent-blue)]/30 mx-auto mb-3" />
+      <p class="text-[var(--text-secondary)]">学生大头照与个人简历正在收集补充中；名片中的邮箱地址为占位信息，更新后将自动替换。</p>
+    </div>
+  </section>
+
+  <!-- 毕业成员 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-4 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue)] rounded-full"></span>
+      毕业成员
+    </h2>
+    <p class="text-[var(--text-secondary)] mb-8">已毕业或离组的研究生成员。</p>
+    <div class="flex flex-wrap gap-3">
+      {graduateList.map((g) => (
+        <span class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[var(--card-bg)] border border-[var(--divider-color)] text-sm text-[var(--text-primary)]">
+          {g.name}
+          <span class="text-[10px] font-mono px-2 py-0.5 rounded-full border border-dashed border-[var(--accent-blue)]/40 text-[var(--accent-blue)]">{g.degree}</span>
+        </span>
+      ))}
+    </div>
+  </section>
+        </div>
+    </div>
+
+    
+</MainGridLayout>
+
+<style is:global>
+/* ===== Member cards (faculty & students) ===== */
+.member-card {
+  position: relative;
+  cursor: pointer;
+  background: var(--card-bg);
+  border: 1px solid var(--divider-color);
+  border-radius: 24px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+  outline: none;
+}
+.member-card--sm { border-radius: 18px; }
+.member-card:hover,
+.member-card:focus-within {
+  transform: translateY(-4px);
+  border-color: var(--card-accent, var(--accent-blue));
+  box-shadow: 0 18px 44px -20px color-mix(in srgb, var(--card-accent, var(--accent-blue)) 55%, transparent);
+}
+.member-card:focus-within {
+  outline: 2px solid var(--card-accent, var(--accent-blue));
+  outline-offset: 3px;
+}
+.member-card:active { transform: translateY(-1px) scale(0.995); }
+.member-card > a.absolute { border-radius: inherit; }
+@media (prefers-reduced-motion: reduce) {
+  .member-card, .member-card:hover { transition: none; transform: none; }
+}
+</style>

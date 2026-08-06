@@ -1,3 +1,12 @@
 ---
-
+// 全局样式入口。variables.styl 定义 :root 设计系统变量，其余为全局组件/排版样式。
+// 注意：CSS 文件之间不得跨文件 @apply 自定义类（处理顺序不确定会随机构建失败）。
+import "../styles/variables.styl";
+import "../styles/main.css";
+import "../styles/transition.css";
+import "../styles/markdown.css";
+import "../styles/markdown-extend.styl";
+import "../styles/scrollbar.css";
+import "../styles/photoswipe.css";
+import "../styles/expressive-code.css";
 ---

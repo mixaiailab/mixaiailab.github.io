@@ -35,4 +35,11 @@ export const zh_TW: Translation = {
 	[Key.author]: "作者",
 	[Key.publishedAt]: "發佈於",
 	[Key.license]: "許可協議",
+
+	// TODO: navigation terms below pending localization (English fallback for now)
+	[Key.news]: "News",
+	[Key.outputs]: "Outputs",
+	[Key.research]: "Research",
+	[Key.members]: "Members",
+	[Key.activities]: "Activities",
 };

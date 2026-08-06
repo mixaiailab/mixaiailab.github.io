@@ -35,4 +35,11 @@ export const vi: Translation = {
 	[Key.author]: "Tác giả",
 	[Key.publishedAt]: "Đăng vào lúc",
 	[Key.license]: "Giấy phép bản quyền",
+
+	// TODO: navigation terms below pending localization (English fallback for now)
+	[Key.news]: "News",
+	[Key.outputs]: "Outputs",
+	[Key.research]: "Research",
+	[Key.members]: "Members",
+	[Key.activities]: "Activities",
 };

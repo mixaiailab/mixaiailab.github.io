@@ -14,8 +14,14 @@ export function getDefaultHue(): number {
 }
 
 export function getHue(): number {
-	const stored = localStorage.getItem("hue");
-	return stored ? Number.parseInt(stored, 10) : getDefaultHue();
+	const configCarrier = document.getElementById("config-carrier");
+	const isFixed = configCarrier?.dataset.themeFixed === "true";
+	// When theme is fixed, always use config hue, ignore localStorage
+	if (!isFixed) {
+		const stored = localStorage.getItem("hue");
+		if (stored) return Number.parseInt(stored, 10);
+	}
+	return getDefaultHue();
 }
 
 export function setHue(hue: number): void {

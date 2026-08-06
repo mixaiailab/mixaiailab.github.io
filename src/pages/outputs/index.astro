@@ -1,0 +1,135 @@
+---
+import MainGridLayout from "../../layouts/MainGridLayout.astro";
+import { siteConfig } from "../../config";
+import { Icon } from "astro-icon/components";
+
+const achievements = [
+  {
+    type: "获奖",
+    typeColor: "var(--accent-blue-deep)",
+    title: "SPIE 最佳论文奖",
+    desc: "团队在SPIE医学影像国际会议获最佳论文奖",
+    image: "/images/achievements/spie-best-paper.png",
+    year: "2025",
+    cols: "lg:col-span-7",
+  },
+  {
+    type: "竞赛",
+    typeColor: "var(--accent-blue-navy)",
+    title: "AAPM MAR Challenge",
+    desc: "AAPM金属伪影去除挑战赛获奖",
+    image: "/images/achievements/aapm-mar-challenge.png",
+    year: "2024",
+    cols: "lg:col-span-5",
+  },
+  {
+    type: "奖项",
+    typeColor: "var(--accent-blue)",
+    title: "广东省百名博士博士后创新人物",
+    desc: "曾栋副研究员入选",
+    year: "2019",
+    cols: "lg:col-span-4",
+  },
+];
+
+const projects = [
+  { type: "国家自然科学基金面上项目", name: "双动脉输入函数驱动的可学习稀疏时相脑灌注CT血流参数稳健估计新方法研究", source: "62571228", pi: "曾栋", period: "2026.01-2029.12" },
+  { type: "国家自然科学基金青年项目", name: "范例影像信息引导的灌注CT缺血半暗带定量成像新方法研究", source: "81701690", pi: "曾栋", period: "2018.01-2020.12" },
+  { type: "国家自然科学基金区域创新发展联合基金集成项目课题", name: "大数据驱动的超低剂量CT智能成像方法研究", source: "U21A6005", pi: "曾栋", period: "2022.01-2025.12" },
+  { type: "国家重点研发计划“数学和应用研究”专项课题", name: "稀疏投影阵列光源静态CT智能成像理论与方法", source: "2024YFA1012003", pi: "曾栋", period: "2024.12-2029.11" },
+  { type: "北京市自然科学基金交叉融合重点项目课题", name: "光子计数CT/PET 高清智能重建算法及生物成像应用研究", source: "Z250002", pi: "曾栋", period: "2025.09-2029.08" },
+  { type: "广东省基础与应用基础研究基金区域联合基金地区培育项目", name: "基于人工智能与临床多模态数据的头颈鳞癌新辅助免疫联合化疗疗效精准预测研究", source: "2024A1515140146", pi: "曾栋", period: "2025.01-2027.12" },
+];
+---
+
+<MainGridLayout title={`科研奖项 - ${siteConfig.title}`} description="课题组在低剂量CT成像、光子计数能谱CT、联邦学习医学影像等领域取得了一系列重要成果。">
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-4 md:px-9 py-6 relative w-full ">
+
+  <section class="py-16 md:py-24">
+    <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 成果</div>
+    <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">奖项</h1>
+    <p class="text-[var(--text-secondary)] text-lg md:text-xl max-w-2xl leading-relaxed mb-16">
+      课题组在低剂量CT成像、光子计数能谱CT、联邦学习医学影像等领域取得了一系列重要成果。
+    </p>
+  </section>
+
+  <!-- 代表性奖励 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue-deep)] rounded-full"></span>
+      代表性奖励与荣誉
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+      {achievements.map((a) => (
+        <div class:list={[a.cols, "bg-[var(--card-bg)] rounded-[18px] overflow-hidden border border-[var(--divider-color)] group hover:border-[var(--accent-blue)] transition-all duration-300"]}>
+          {a.image && (
+            <div class="aspect-video bg-[var(--page-bg)] overflow-hidden">
+              <img src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500" />
+            </div>
+          )}
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="px-3 py-1 rounded-full text-xs font-mono" style={{backgroundColor: a.typeColor + '15', color: a.typeColor}}>{a.type}</span>
+              <span class="text-xs font-mono text-[var(--text-secondary)]">{a.year}</span>
+            </div>
+            <h3 class="text-lg font-bold text-[var(--text-primary)]">{a.title}</h3>
+            <p class="text-sm text-[var(--text-secondary)] mt-2">{a.desc}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 科研项目 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue)] rounded-full"></span>
+      在研/完成项目
+    </h2>
+    <div class="space-y-4">
+      {projects.map((p) => (
+        <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="px-3 py-0.5 rounded-full text-xs font-mono text-[var(--accent-blue)] bg-[var(--accent-blue)]/10">{p.type}</span>
+            <span class="text-xs font-mono text-[var(--text-secondary)]">{p.period}</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-[var(--text-primary)] leading-relaxed">{p.name}</h4>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-sm text-[var(--text-secondary)]">
+              <span>编号：{p.source}</span>
+              <span>负责人：{p.pi}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 代表性论文 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue-navy)] rounded-full"></span>
+      代表性论文
+    </h2>
+    <div class="space-y-3">
+      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
+        <p class="text-[var(--text-primary)]">D. Zeng, L. Yao, Y. Ge, et al., <span class="italic">"Full-Spectrum-Knowledge-Aware Tensor Model for Energy-Resolved CT Iterative Reconstruction"</span>, <strong>IEEE Transactions on Medical Imaging</strong>, vol.39, no.9, pp.2831-2843, 2020.</p>
+      </div>
+      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
+        <p class="text-[var(--text-primary)]">J. He, Y. Wang, and J. Ma*, <span class="italic">"Radon Inversion via Deep Learning"</span>, <strong>IEEE Transactions on Medical Imaging</strong>, vol.39, no.6, pp.2076-2087, 2020.</p>
+      </div>
+      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
+        <p class="text-[var(--text-primary)]">S. Li, D. Zeng, J. Peng, et al., <span class="italic">"An Efficient Iterative Cerebral Perfusion CT Reconstruction via Low-Rank Tensor Decomposition"</span>, <strong>IEEE Transactions on Medical Imaging</strong>, vol.38, no.2, pp.360-370, 2018.</p>
+      </div>
+      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
+        <p class="text-[var(--text-primary)]">Z. Bian, D. Zeng, Z. Zhang, et al., <span class="italic">"Low-dose dynamic myocardial perfusion CT imaging using a motion adaptive sparsity prior"</span>, <strong>Medical Physics</strong>, 2017, 44(9): e188~e201.</p>
+      </div>
+      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
+        <p class="text-[var(--text-primary)]">J. Ma, Z. Liang, Y. Fan, et al., <span class="italic">"Variance analysis of x-ray CT sinograms in the presence of electronic noise background"</span>, <strong>Medical Physics</strong>, vol.39, no.7, pp.4051-4065, 2012.</p>
+      </div>
+    </div>
+  </section>
+        </div>
+    </div>
+</MainGridLayout>

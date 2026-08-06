@@ -35,4 +35,11 @@ export const ja: Translation = {
 	[Key.author]: "作者",
 	[Key.publishedAt]: "公開日",
 	[Key.license]: "ライセンス",
+
+	// TODO: navigation terms below pending localization (English fallback for now)
+	[Key.news]: "News",
+	[Key.outputs]: "Outputs",
+	[Key.research]: "Research",
+	[Key.members]: "Members",
+	[Key.activities]: "Activities",
 };

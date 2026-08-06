@@ -35,4 +35,11 @@ export const id: Translation = {
 	[Key.author]: "Penulis",
 	[Key.publishedAt]: "Diterbitkan pada",
 	[Key.license]: "Lisensi",
+
+	// TODO: navigation terms below pending localization (English fallback for now)
+	[Key.news]: "News",
+	[Key.outputs]: "Outputs",
+	[Key.research]: "Research",
+	[Key.members]: "Members",
+	[Key.activities]: "Activities",
 };
