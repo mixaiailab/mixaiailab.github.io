@@ -26,8 +26,8 @@ import { pluginCustomCopyButton } from "./src/plugins/expressive-code/custom-cop
 
 // https://astro.build/config
 export default defineConfig({
-	// TODO(必填): 部署前替换为实验室正式域名 —— 该值决定 sitemap / RSS / OpenGraph 中的 canonical URL
-	site: "https://mix-aiailab.example.com/",
+	// GitHub Pages 根网址 —— 该值决定 sitemap / RSS / OpenGraph 中的 canonical URL
+	site: "https://mixaiailab.github.io/",
 	base: "/",
 	trailingSlash: "always",
 	integrations: [
