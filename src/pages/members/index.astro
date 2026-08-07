@@ -5,7 +5,10 @@ import { Icon } from "astro-icon/components";
 import { faculty, phdStudents, masterStudentGroups, graduates } from "../../data/members";
 
 // 防御：避免模块热更新中间态导致某个数组为 undefined 时页面崩溃（Cannot read 'map' of undefined）
-const facultyList = faculty ?? [];
+// 展示顺序：马建华（PI）→ 曾栋 → 边兆英
+const facultyList = ["ma-jianhua", "zeng-dong", "bian-zhaoying"]
+  .map((id) => (faculty ?? []).find((f) => f.id === id))
+  .filter((f): f is NonNullable<typeof f> => f !== undefined);
 const phdList = phdStudents ?? [];
 const masterGroups = masterStudentGroups ?? [];
 const graduateList = graduates ?? [];

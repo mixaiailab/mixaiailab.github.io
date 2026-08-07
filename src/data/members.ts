@@ -31,7 +31,7 @@ export const faculty: Member[] = [
     email: "zd1989@smu.edu.cn",
     phone: "",
     research: "高端医学X射线CT成像方法与技术",
-    color: "var(--accent-blue-navy)",
+    color: "#D94848",
     homepage: "https://portal.smu.edu.cn/swyxgcxy/info/1020/3442.htm",
     bio: "南方医科大学生物医学工程学院副研究员。2016-2018年南方医科大学博士后，2017-2018年约翰斯霍普金斯大学博士后，2019-2022年华南理工大学博士后。主持国家自然科学基金广东联合基金集成项目子课题、国自然青年科学基金项目，在Nature Communications Engineering、IEEE TMI等期刊发表系列创新成果。",
     education: [
@@ -73,7 +73,6 @@ export const faculty: Member[] = [
     color: "#D94848",
     homepage: "https://gr.xjtu.edu.cn/jhma75/",
     cardLink: "https://gr.xjtu.edu.cn/jhma75/",
-    badge: "合作导师",
     bio: "马建华，国家级领军学者，西安交通大学智能化诊疗装备研究中心创始主任。长期从事高端医学CT成像理论与算法研究，所取得的创新成果已成功适配于自研分布式微剂量CT系统和东软医疗国产高端CT系列产品中。主持科技部重点研发计划项目、NSFC区域创新重大集成项目等国家级课题10余项，创建2个省级科研平台，兼任4个国家级专业委员会副主委、IEEE-TMI与PMB等期刊编委、陕西省科技创新团队负责人。在医学成像领域发表学术论文百余篇，连续三年(2022年-2024年)获评中国高被引学者；授权发明专利30件，并实现产业转化。获2024年广东省自然科学奖一等奖（排1）、2019年广东省技术发明奖一等奖（排1）、丁颖科技奖（广东省科协个人最高奖）等荣誉。",
     education: [
       "2005.09-2008.07 南方医科大学，生物医学工程专业（医学成像），博士",
@@ -125,7 +124,7 @@ export const faculty: Member[] = [
     email: "zybian@smu.edu.cn",
     phone: "020-62789313",
     research: "医学CT低剂量成像",
-    color: "var(--accent-blue-deep)",
+    color: "#D94848",
     homepage: "https://portal.smu.edu.cn/swyxgcxy/info/1020/1206.htm",
     cardLink: "https://portal.smu.edu.cn/swyxgcxy/info/1020/1206.htm",
     bio: "南方医科大学生物医学工程学院副教授。2008年山东大学生物医学工程学士、2011年南方医科大学生物医学工程硕士、2015年博士。主持国家自然科学基金青年项目，参与广东省应用型科技研发专项等课题。中国体视觉学会会员、中国生物医学工程学会会员。",
@@ -188,7 +187,7 @@ const masterRow2: Member[] = [
 ];
 
 const masterRow3: Member[] = [
-  { id: "stu-houhao", name: "侯蒿", degree: "硕士研究生", photo: "", research: "", email: "houhao@smu.edu.cn" },
+  { id: "stu-housong", name: "侯嵩", degree: "硕士研究生", photo: "", research: "", email: "housong@smu.edu.cn" },
   { id: "stu-libingchen", name: "李冰晨", degree: "硕士研究生", photo: "", research: "", email: "libingchen@smu.edu.cn" },
   { id: "stu-lijiaqi", name: "李嘉琦", degree: "硕士研究生", photo: "", research: "", email: "lijiaqi@smu.edu.cn" },
   { id: "stu-luoxiaohong", name: "罗小宏", degree: "硕士研究生", photo: "", research: "", email: "luoxiaohong@smu.edu.cn" },

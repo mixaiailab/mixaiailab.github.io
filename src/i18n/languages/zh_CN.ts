@@ -38,7 +38,7 @@ export const zh_CN: Translation = {
 
 	[Key.news]: "新闻",
 	[Key.outputs]: "成果",
-	[Key.research]: "项目与方向",
+	[Key.research]: "研究方向",
 	[Key.members]: "成员",
 	[Key.activities]: "活动",
 };

@@ -8,39 +8,77 @@ const directions = [
     id: "01",
     title: "医学CT高分辨成像理论",
     color: "var(--accent-blue)",
-    desc: "致力于突破传统解析重建算法的空间分辨率极限，通过精确建模X射线光子与物质的物理相互作用及噪声统计特性，从投影数据中稳定恢复出微米至亚毫米级的精细结构信息。",
+    desc: `作为医学CT成像领域的一项核心挑战，高分辨成像理论旨在突破传统解析重建算法固有的空间分辨率极限，其关键在于对X射线光子与物质相互作用的物理过程以及探测系统中的噪声统计特性进行精确建模。基于这一认知，研究聚焦于从原始投影数据中重建微米至亚毫米级的组织精细结构信息，从而为早期病灶探测、骨微结构评估及低对比度软组织成像提供新的理论支撑。
+
+具体研究方向包括：
+
+（1）非直接对数变换校正方法论
+
+（2）物理机制引导的可学习图像重建方法论`,
     keywords: ["高分辨成像", "解析重建", "物理建模", "亚毫米结构"],
-    image: "/images/projects/directions/high-end-ct.png",
+    image: "/images/projects/directions/high-res-imaging-theory.jpg",
   },
   {
     id: "02",
-    title: "数模双驱动医学CT成像模型",
+    title: "数模双驱动医学CT重建方法簇",
     color: "var(--accent-blue-light)",
-    desc: "融合物理成像的解析先验与数据驱动的深度学习网络，构建可解释性强且泛化能力优的混合重建模型，以应对稀疏采样和低剂量条件下的图像退化问题。",
+    desc: `当前非理想采样下CT重建的核心困境在于物理成像模型的非线性病态性与深度学习黑箱外推不可靠性之间的矛盾。研究聚焦从贝叶斯推断视角重新审视重建问题，将CT系统的确定性知识（几何投影、衰减积分、量子噪声生成机制）作为硬约束植入网络前向传播过程，同时将数据驱动的学习模块视为对未知系统偏差与患者特异性变化的软补偿。由此形成的混合模型兼具解析重建的零样本可解释性（空域频域一致性）和深度网络的强拟合能力，且在分布外数据上展现出优越的泛化稳定性。
+
+具体研究方向包括：
+
+（1）噪声生成机制的医学CT重建方法簇
+
+（2）跨机型CT同质化重建方法簇`,
     keywords: ["数模融合", "深度学习", "混合重建", "稀疏低剂量"],
-    image: "/images/projects/directions/low-dose-ct.png",
+    image: "/images/projects/directions/dual-drive-model.png",
   },
   {
     id: "03",
     title: "光子CT定量成像技术",
     color: "var(--accent-blue-navy)",
-    desc: "利用光子计数探测器获取多能谱投影数据，实现物质组分（如碘、钙、水）的精确分离与浓度量化，从而提供高分辨率低剂量的光子计数CT专用成像框架",
+    desc: `研究聚焦于光子计数CT（Photon-Counting CT, PCCT）的定量成像前沿，致力于突破传统能量积分CT在组织分辨与物质定量上的固有局限。我们以光子计数探测器为物理基底，系统性地构建了从原始信号校正、物理模型构建到高维迭代重建与预临床验证的完整技术链条，旨在为精准医学提供高分辨率、低辐射剂量的专用成像框架。
+
+具体研究方向包括：
+
+（1）光子计数探测器物理建模与多尺度信号校正算法
+
+（2）光子CT定量重建算法簇
+
+（3）光子CT超高分辨成像应用`,
     keywords: ["光子计数", "能谱成像", "物质分解", "定量成像"],
-    image: "/images/projects/directions/photon-ct2.png",
+    image: "/images/projects/directions/photon-counting-quantitative.jpg",
   },
   {
     id: "04",
     title: "灌注CT功能成像技术",
     color: "var(--accent-blue-deep)",
-    desc: "通过对动态增强扫描序列的时间-密度曲线进行血流动力学建模，量化组织微循环的灌注参数（血流量、血容量、平均通过时间等），反映器官或病灶的生理功能性状态。",
+    desc: `灌注CT通过动态监测造影剂在脑组织中的时空分布，可定量提取脑血流量（CBF）、脑血容量（CBV）、平均通过时间（MTT）及达峰时间（TTP）等功能参数，为急性缺血性脑卒中、脑肿瘤及神经退行性疾病的早期诊断与疗效评估提供不可替代的生理信息。然而，该技术从数据采集到参数反演的全链条中，面临着由多源设备异质性（不同厂商CT系统在能谱响应、扫描几何及探测器噪声特性上的差异）与低剂量辐射约束（为降低患者辐射暴露而被迫降低管电流或管电压，导致投影数据信噪比严重恶化）共同引发的功能参数精度退化难题。其深层科学挑战在于：脑血流动力学本身具有高度非平稳性、跨个体变异性及病理状态下的非线性耦合特征，如何从严重退化且分布漂移的观测数据中，鲁棒地重建出符合生理学先验的时变浓度曲线，并据此精准计算功能参数，至今仍属开放性问题。
+
+具体研究方向包括：
+
+（1）灌注CT扫描协议个体化设计
+
+（2）灌注CT功能成像
+
+（3）灌注CT预临床应用`,
     keywords: ["灌注CT", "血流动力学", "时间-密度曲线", "功能成像"],
-    image: "/images/projects/directions/phantom-ct.png",
+    image: "/images/projects/directions/perfusion-functional.jpg",
   },
   {
     id: "05",
     title: "新一代CT成像理论与技术",
     color: "var(--accent-blue)",
-    desc: "以降低剂量，增加成像分辨率为目标的下一代CT成像设备概念设计与制造：分布式CT，静态CT，探源一体静态CT双环CT、静态CT-PET成像系统等。",
+    desc: `新一代CT成像理论与技术的研究，旨在突破传统CT在剂量辐射、时间分辨率和系统几何结构上的固有瓶颈，其核心驱动力来自临床对低剂量筛查、动态功能成像以及多模态分子影像的迫切需求。研究方向包括：
+
+（1）分布式微剂量CT基于“扫描与成像分离，用计算换剂量”思想进行构建，有望解决当前集成式医学CT面临的价格昂贵、数据分散、辐射剂量高等突出问题。
+
+（2）静态CT摒弃机械旋转部件，利用环形分布的多焦点X光源与对应的静止探测器组，通过时序编码激发实现亚毫秒级时间分辨率，彻底消除运动伪影
+
+（3）探源一体静态CT将射线源与探测器融合为一体化部件，依据实时投影数据自适应调整源发射模式，实现剂量与信噪比的动态最优平衡
+
+（4）静态CT-PET双环成像系统则在同一静止机架内集成CT透射环与PET发射环，利用CT提供的衰减校正图谱与PET的分子示踪信号在空间和时间上的天然配准，实现结构、功能和代谢信息的同步瞬态采集。
+
+整体而言，本方向融合了新型物理前端设计、非线性逆向求解、多传感器同步触发及多模态联合重建等关键技术，致力于构建“极低剂量、极高速度、多维信息”的新一代CT成像范式，为精准医学和智能诊疗提供底层技术支撑。`,
     keywords: ["静态CT", "探源一体CT", "双环CT", "静态CT-PET成像系统"],
     image: "/images/projects/directions/next-gen-ct.png",
   },
@@ -65,7 +103,7 @@ const equipmentList = [
         <div class="card-base z-10 px-4 md:px-9 py-6 relative w-full ">
 
   <section class="py-16 md:py-24">
-    <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 项目与方向</div>
+    <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 研究方向</div>
     <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">研究方向</h1>
     <p class="text-[var(--text-secondary)] text-lg md:text-xl max-w-3xl leading-relaxed mb-16">
       MiX-AIAI Lab 聚焦医学X射线前沿成像算法与装备，覆盖从物理建模到临床转化的全链条研究。
@@ -83,7 +121,7 @@ const equipmentList = [
             </div>
             <h2 class="text-2xl md:text-3xl font-bold text-[var(--text-primary)]">{d.title}</h2>
           </div>
-          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-4">{d.desc}</p>
+          <p class="text-[var(--text-secondary)] text-lg leading-relaxed mb-4 whitespace-pre-line">{d.desc}</p>
           <div class="flex flex-wrap gap-2">
             {d.keywords.map(kw => (
               <span class="px-3 py-1 rounded-full text-xs font-mono border border-[var(--divider-color)] text-[var(--text-secondary)]">{kw}</span>
