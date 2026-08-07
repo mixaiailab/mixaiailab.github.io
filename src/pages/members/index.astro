@@ -21,8 +21,7 @@ const graduateList = graduates ?? [];
     <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 成员</div>
     <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">团队成员</h1>
     <p class="text-[var(--text-secondary)] text-lg md:text-xl max-w-2xl leading-relaxed mb-16">
-      一支由教授、副教授、副研究员及若干研究生组成的跨学科研究团队，致力于推动CT成像技术的边界。
-      点击名片可查看完整简历。
+      一支由深耕成像多年的专家与来自计算机、医学影像等不同基础学科的研究生组成的跨学科研究团队，致力于推动CT成像技术的边界。
     </p>
   </section>
 
@@ -36,7 +35,7 @@ const graduateList = graduates ?? [];
           i % 2 === 1 ? "md:[direction:rtl]" : "",
         ]}
       >
-        <a href={`/members/${f.id}/`} aria-label={`查看${f.name}的完整简介`} class="absolute inset-0 z-[1] rounded-[inherit]"></a>
+        <a href={f.cardLink ?? `/members/${f.id}/`} target={f.cardLink ? "_blank" : null} rel={f.cardLink ? "noopener" : null} aria-label={`查看${f.name}${f.cardLink ? "的个人主页" : "的完整简介"}`} class="absolute inset-0 z-[1] rounded-[inherit]"></a>
 <div class="md:col-span-4 md:[direction:ltr]">
           <div class="relative aspect-square rounded-[20px] overflow-hidden bg-gradient-to-br from-[var(--card-accent)]/10 via-transparent to-[var(--card-accent)]/25 border border-[var(--divider-color)] transition-colors duration-300 group-hover:border-[var(--card-accent)]">
             <div class="w-full h-full flex items-center justify-center">
@@ -45,11 +44,11 @@ const graduateList = graduates ?? [];
             <!-- 悬停提示 -->
             <div class="absolute inset-0 flex items-end justify-center pb-4 bg-gradient-to-t from-black/45 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <span class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-white/[0.92] text-[#161616] text-xs font-medium backdrop-blur-sm">
-                点击名片查看完整简历
+                {f.cardLink ? "点击名片查看个人主页" : "点击名片查看完整简历"}
                 <Icon name="material-symbols:arrow-forward-rounded" class="text-[1rem]" />
               </span>
             </div>
-            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider text-white" style={{ backgroundColor: f.color }}>PI</span>
+            <span class="absolute top-3 left-3 px-2.5 py-1 rounded-full text-[10px] font-mono tracking-wider text-white" style={{ backgroundColor: f.color }}>{f.badge ?? "PI"}</span>
           </div>
         </div>
 
@@ -93,7 +92,7 @@ const graduateList = graduates ?? [];
             </div>
 
             <div class="pt-1 flex items-center gap-1.5 text-sm font-mono text-[var(--accent-blue)]">
-              <span>查看完整简历</span>
+              <span>{f.cardLink ? "查看个人主页" : "查看完整简历"}</span>
               <Icon name="material-symbols:arrow-forward-rounded" class="text-[1.1rem] transition-transform duration-300 group-hover:translate-x-1" />
             </div>
           </div>
@@ -108,7 +107,7 @@ const graduateList = graduates ?? [];
       <span class="w-1 h-6 bg-[var(--accent-blue)] rounded-full"></span>
       研究生
     </h2>
-    <p class="text-[var(--text-secondary)] mb-10">课题组目前有博士生和硕士生若干名。点击名片查看成员信息，照片与研究方向待补充。</p>
+    <p class="text-[var(--text-secondary)] mb-10">课题组目前有博士生2名和硕士生20余名。感谢他们为课题组带来的杰出成果和贡献</p>
 
     <h3 class="text-lg font-bold text-[var(--text-primary)] mb-5">博士研究生</h3>
     <div class="flex flex-wrap gap-6 mb-12">
@@ -181,7 +180,7 @@ const graduateList = graduates ?? [];
 
     <div class="bg-[var(--card-bg)] rounded-[18px] p-8 border border-dashed border-[var(--accent-blue)]/30 text-center">
       <Icon name="material-symbols:groups-rounded" class="text-[3rem] text-[var(--accent-blue)]/30 mx-auto mb-3" />
-      <p class="text-[var(--text-secondary)]">学生大头照与个人简历正在收集补充中；名片中的邮箱地址为占位信息，更新后将自动替换。</p>
+      <p class="text-[var(--text-secondary)]">更多 MiX-AIAI Lab 成员信息正在补充中</p>
     </div>
   </section>
 

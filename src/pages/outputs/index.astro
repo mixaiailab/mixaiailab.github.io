@@ -42,68 +42,16 @@ const projects = [
 ];
 ---
 
-<MainGridLayout title={`科研奖项 - ${siteConfig.title}`} description="课题组在低剂量CT成像、光子计数能谱CT、联邦学习医学影像等领域取得了一系列重要成果。">
+<MainGridLayout title={`科研成果 - ${siteConfig.title}`} description="课题组在低剂量CT成像、光子计数能谱CT、联邦学习医学影像等领域取得了一系列重要成果。">
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
         <div class="card-base z-10 px-4 md:px-9 py-6 relative w-full ">
 
   <section class="py-16 md:py-24">
     <div class="text-sm font-mono text-[var(--accent-blue)] tracking-wider mb-4">/ 成果</div>
-    <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">奖项</h1>
+    <h1 class="text-[clamp(2.4rem,5vw,5rem)] font-bold leading-[1.05] text-[var(--text-primary)] mb-6">成果</h1>
     <p class="text-[var(--text-secondary)] text-lg md:text-xl max-w-2xl leading-relaxed mb-16">
       课题组在低剂量CT成像、光子计数能谱CT、联邦学习医学影像等领域取得了一系列重要成果。
     </p>
-  </section>
-
-  <!-- 代表性奖励 -->
-  <section class="pb-24">
-    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
-      <span class="w-1 h-6 bg-[var(--accent-blue-deep)] rounded-full"></span>
-      代表性奖励与荣誉
-    </h2>
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
-      {achievements.map((a) => (
-        <div class:list={[a.cols, "bg-[var(--card-bg)] rounded-[18px] overflow-hidden border border-[var(--divider-color)] group hover:border-[var(--accent-blue)] transition-all duration-300"]}>
-          {a.image && (
-            <div class="aspect-video bg-[var(--page-bg)] overflow-hidden">
-              <img src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500" />
-            </div>
-          )}
-          <div class="p-6">
-            <div class="flex items-center gap-3 mb-2">
-              <span class="px-3 py-1 rounded-full text-xs font-mono" style={{backgroundColor: a.typeColor + '15', color: a.typeColor}}>{a.type}</span>
-              <span class="text-xs font-mono text-[var(--text-secondary)]">{a.year}</span>
-            </div>
-            <h3 class="text-lg font-bold text-[var(--text-primary)]">{a.title}</h3>
-            <p class="text-sm text-[var(--text-secondary)] mt-2">{a.desc}</p>
-          </div>
-        </div>
-      ))}
-    </div>
-  </section>
-
-  <!-- 科研项目 -->
-  <section class="pb-24">
-    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
-      <span class="w-1 h-6 bg-[var(--accent-blue)] rounded-full"></span>
-      在研/完成项目
-    </h2>
-    <div class="space-y-4">
-      {projects.map((p) => (
-        <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
-          <div class="flex flex-wrap items-center gap-2 mb-2">
-            <span class="px-3 py-0.5 rounded-full text-xs font-mono text-[var(--accent-blue)] bg-[var(--accent-blue)]/10">{p.type}</span>
-            <span class="text-xs font-mono text-[var(--text-secondary)]">{p.period}</span>
-          </div>
-          <div>
-            <h4 class="font-bold text-[var(--text-primary)] leading-relaxed">{p.name}</h4>
-            <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-sm text-[var(--text-secondary)]">
-              <span>编号：{p.source}</span>
-              <span>负责人：{p.pi}</span>
-            </div>
-          </div>
-        </div>
-      ))}
-    </div>
   </section>
 
   <!-- 代表性论文 -->
@@ -128,6 +76,58 @@ const projects = [
       <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
         <p class="text-[var(--text-primary)]">J. Ma, Z. Liang, Y. Fan, et al., <span class="italic">"Variance analysis of x-ray CT sinograms in the presence of electronic noise background"</span>, <strong>Medical Physics</strong>, vol.39, no.7, pp.4051-4065, 2012.</p>
       </div>
+    </div>
+  </section>
+
+  <!-- 在研/完成项目 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue)] rounded-full"></span>
+      在研/完成项目
+    </h2>
+    <div class="space-y-4">
+      {projects.map((p) => (
+        <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="px-3 py-0.5 rounded-full text-xs font-mono text-[var(--accent-blue)] bg-[var(--accent-blue)]/10">{p.type}</span>
+            <span class="text-xs font-mono text-[var(--text-secondary)]">{p.period}</span>
+          </div>
+          <div>
+            <h4 class="font-bold text-[var(--text-primary)] leading-relaxed">{p.name}</h4>
+            <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-sm text-[var(--text-secondary)]">
+              <span>编号：{p.source}</span>
+              <span>负责人：{p.pi}</span>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 代表性奖励与荣誉 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue-deep)] rounded-full"></span>
+      代表性奖励与荣誉
+    </h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-6">
+      {achievements.map((a) => (
+        <div class:list={[a.cols, "bg-[var(--card-bg)] rounded-[18px] overflow-hidden border border-[var(--divider-color)] group hover:border-[var(--accent-blue)] transition-all duration-300"]}>
+          {a.image && (
+            <div class="aspect-video bg-[var(--page-bg)] overflow-hidden">
+              <img src={a.image} alt={a.title} class="w-full h-full object-cover group-hover:scale-[1.025] transition-transform duration-500" />
+            </div>
+          )}
+          <div class="p-6">
+            <div class="flex items-center gap-3 mb-2">
+              <span class="px-3 py-1 rounded-full text-xs font-mono" style={{backgroundColor: a.typeColor + '15', color: a.typeColor}}>{a.type}</span>
+              <span class="text-xs font-mono text-[var(--text-secondary)]">{a.year}</span>
+            </div>
+            <h3 class="text-lg font-bold text-[var(--text-primary)]">{a.title}</h3>
+            <p class="text-sm text-[var(--text-secondary)] mt-2">{a.desc}</p>
+          </div>
+        </div>
+      ))}
     </div>
   </section>
         </div>

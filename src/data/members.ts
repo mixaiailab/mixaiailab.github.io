@@ -9,6 +9,9 @@ export interface Member {
   photo?: string;
   research?: string;
   color?: string;
+  homepage?: string;
+  cardLink?: string;
+  badge?: string;
   bio?: string;
   education?: string[];
   career?: string[];
@@ -22,14 +25,56 @@ export interface Member {
 
 export const faculty: Member[] = [
   {
+    id: "zeng-dong",
+    name: "曾栋",
+    title: "副研究员 / 硕士生导师",
+    email: "zd1989@smu.edu.cn",
+    phone: "",
+    research: "高端医学X射线CT成像方法与技术",
+    color: "var(--accent-blue-navy)",
+    homepage: "https://portal.smu.edu.cn/swyxgcxy/info/1020/3442.htm",
+    bio: "南方医科大学生物医学工程学院副研究员。2016-2018年南方医科大学博士后，2017-2018年约翰斯霍普金斯大学博士后，2019-2022年华南理工大学博士后。主持国家自然科学基金广东联合基金集成项目子课题、国自然青年科学基金项目，在Nature Communications Engineering、IEEE TMI等期刊发表系列创新成果。",
+    education: [
+      "2011.09-2016.07 南方医科大学，生物医学工程，博士",
+      "2007.09-2011.07 南方医科大学，生物医学工程，学士",
+    ],
+    career: [
+      "2022.01-至今 南方医科大学生物医学工程学院，副研究员",
+      "2019.01-2022.01 华南理工大学，博士后",
+      "2017.09-2018.08 美国约翰斯霍普金斯大学，博士后",
+      "2016.09-2018.12 南方医科大学，博士后",
+    ],
+    appointments: [
+      "中国体视学学会青委会 委员",
+    ],
+    awards: [
+      "广东省百名博士博士后创新人物，2019年",
+      "广州市青年科技人才托举工程项目，2022年",
+    ],
+    projects: [
+      "国家自然科学基金广东联合基金集成项目子课题，2022-2025，主持",
+      "国家自然科学基金青年科学基金项目，2018-2020，主持",
+    ],
+    papers: [
+      "S. Li, D. Zeng, and J. Ma, et al., Physics in Medicine and Biology, 2022.",
+      "D. Zeng, and J. Ma, et al., IEEE TRPMS, 2021.",
+      "D. Li, D. Zeng, and J. Ma, et al., IEEE Transactions on Medical Imaging, 2020.",
+      "D. Zeng, and J. Ma, et al., IEEE Transactions on Medical Imaging, 2020.",
+      "L. Yao, D. Zeng, and J. Ma, et al., Physics in Medicine and Biology, 2019.",
+    ],
+  },
+  {
     id: "ma-jianhua",
     name: "马建华",
-    title: "教授 / 博士生导师 / 系主任",
+    title: "教授 / 博士生导师 ",
     email: "jhma@smu.edu.cn",
     phone: "",
     research: "高端医学CT成像与影像分析",
-    color: "var(--accent-blue)",
-    bio: "南方医科大学生物医学工程学院教授、系主任。2011-2012年美国纽约大学石溪分校访问学者。中国图象图形学学会理事、医学影像分会副主任委员、中国生物医学工程学会青年委员会副主任委员。主持国家自然科学基金联合基金项目、广东省应用型科技研发专项等多项国家级课题，在IEEE TMI、Medical Physics等顶级期刊发表论文100余篇。",
+    color: "#D94848",
+    homepage: "https://gr.xjtu.edu.cn/jhma75/",
+    cardLink: "https://gr.xjtu.edu.cn/jhma75/",
+    badge: "合作导师",
+    bio: "马建华，国家级领军学者，西安交通大学智能化诊疗装备研究中心创始主任。长期从事高端医学CT成像理论与算法研究，所取得的创新成果已成功适配于自研分布式微剂量CT系统和东软医疗国产高端CT系列产品中。主持科技部重点研发计划项目、NSFC区域创新重大集成项目等国家级课题10余项，创建2个省级科研平台，兼任4个国家级专业委员会副主委、IEEE-TMI与PMB等期刊编委、陕西省科技创新团队负责人。在医学成像领域发表学术论文百余篇，连续三年(2022年-2024年)获评中国高被引学者；授权发明专利30件，并实现产业转化。获2024年广东省自然科学奖一等奖（排1）、2019年广东省技术发明奖一等奖（排1）、丁颖科技奖（广东省科协个人最高奖）等荣誉。",
     education: [
       "2005.09-2008.07 南方医科大学，生物医学工程专业（医学成像），博士",
       "2002.09-2005.07 中山大学，计算数学专业（医学图像分析），硕士",
@@ -81,6 +126,8 @@ export const faculty: Member[] = [
     phone: "020-62789313",
     research: "医学CT低剂量成像",
     color: "var(--accent-blue-deep)",
+    homepage: "https://portal.smu.edu.cn/swyxgcxy/info/1020/1206.htm",
+    cardLink: "https://portal.smu.edu.cn/swyxgcxy/info/1020/1206.htm",
     bio: "南方医科大学生物医学工程学院副教授。2008年山东大学生物医学工程学士、2011年南方医科大学生物医学工程硕士、2015年博士。主持国家自然科学基金青年项目，参与广东省应用型科技研发专项等课题。中国体视觉学会会员、中国生物医学工程学会会员。",
     education: [
       "2012.09-2015.07 南方医科大学，生物医学工程，博士",
@@ -109,48 +156,10 @@ export const faculty: Member[] = [
       "Z. Bian, J. Ma*, J. Huang, et al., SR-NLM: a sinogram restoration induced non-local means image filtering for low-dose computed tomography, Computerized Medical Imaging and Graphics, 2013, 37(4): 293~303.",
     ],
   },
-  {
-    id: "zeng-dong",
-    name: "曾栋",
-    title: "副研究员 / 硕士生导师",
-    email: "zd1989@smu.edu.cn",
-    phone: "",
-    research: "高端医学X射线CT成像方法与技术",
-    color: "var(--accent-blue-navy)",
-    bio: "南方医科大学生物医学工程学院副研究员。2016-2018年南方医科大学博士后，2017-2018年约翰斯霍普金斯大学博士后，2019-2022年华南理工大学博士后。主持国家自然科学基金广东联合基金集成项目子课题、国自然青年科学基金项目，在Nature Communications Engineering、IEEE TMI等期刊发表系列创新成果。",
-    education: [
-      "2011.09-2016.07 南方医科大学，生物医学工程，博士",
-      "2007.09-2011.07 南方医科大学，生物医学工程，学士",
-    ],
-    career: [
-      "2022.01-至今 南方医科大学生物医学工程学院，副研究员",
-      "2019.01-2022.01 华南理工大学，博士后",
-      "2017.09-2018.08 美国约翰斯霍普金斯大学，博士后",
-      "2016.09-2018.12 南方医科大学，博士后",
-    ],
-    appointments: [
-      "中国体视学学会青委会 委员",
-    ],
-    awards: [
-      "广东省百名博士博士后创新人物，2019年",
-      "广州市青年科技人才托举工程项目，2022年",
-    ],
-    projects: [
-      "国家自然科学基金广东联合基金集成项目子课题，2022-2025，主持",
-      "国家自然科学基金青年科学基金项目，2018-2020，主持",
-    ],
-    papers: [
-      "S. Li, D. Zeng, and J. Ma, et al., Physics in Medicine and Biology, 2022.",
-      "D. Zeng, and J. Ma, et al., IEEE TRPMS, 2021.",
-      "D. Li, D. Zeng, and J. Ma, et al., IEEE Transactions on Medical Imaging, 2020.",
-      "D. Zeng, and J. Ma, et al., IEEE Transactions on Medical Imaging, 2020.",
-      "L. Yao, D. Zeng, and J. Ma, et al., Physics in Medicine and Biology, 2019.",
-    ],
-  },
 ];
 
 export const phdStudents: Member[] = [
-  { id: "stu-wanghao", name: "王昊", degree: "博士研究生", photo: "", research: "", email: "wanghao@smu.edu.cn" },
+  { id: "stu-wanghao", name: "王昊", degree: "博士研究生", photo: "/images/members/wanghao.jpg", research: "静态CT重建理论和算法、低剂量CT多机构协作学习、AI医学诊断分析", bio: "拥有无人机航拍技术、医工竞赛和创业比赛团队组织经验、服务器管理经验、算法工程岗位实习经历和学院骨干工作经验。", email: "wang_hao@smu.edu.cn" },
   { id: "stu-liaojingyi", name: "廖静怡", degree: "博士研究生", photo: "", research: "", email: "liaojingyi@smu.edu.cn" },
 ];
 
@@ -162,7 +171,7 @@ const masterRow1: Member[] = [
   { id: "stu-liyule", name: "李玉乐", degree: "硕士研究生", photo: "", research: "", email: "liyule@smu.edu.cn" },
   { id: "stu-mengxiao", name: "孟筱", degree: "硕士研究生", photo: "", research: "", email: "mengxiao@smu.edu.cn" },
   { id: "stu-wangyankun", name: "王延坤", degree: "硕士研究生", photo: "", research: "", email: "wangyankun@smu.edu.cn" },
-  { id: "stu-wujunhao", name: "吴君浩", degree: "硕士研究生", photo: "", research: "", email: "wujunhao@smu.edu.cn" },
+  { id: "stu-wujunhao", name: "吴君浩", degree: "硕士研究生", photo: "/images/members/wujunhao.jpg", research: "静态CT重建理论和算法、低剂量CT重建", bio: "拥有CT重建算法推导、CT重建算法实现、生医工竞赛经验。", email: "wujunhao@smu.edu.cn" },
   { id: "stu-xiaomeng", name: "肖萌", degree: "硕士研究生", photo: "", research: "", email: "xiaomeng@smu.edu.cn" },
 ];
 
@@ -212,13 +221,13 @@ export const members: Member[] = [
     ...m,
     kind: "student" as const,
     color: "var(--accent-blue)",
-    note: "照片与详细简历正在整理中，欢迎通过邮箱联系交流。",
+    note: m.photo || m.bio ? undefined : "照片与详细简历正在整理中，欢迎通过邮箱联系交流。",
   })),
   ...masterStudents.map((m) => ({
     ...m,
     kind: "student" as const,
     color: "var(--accent-blue-light)",
-    note: "照片与详细简历正在整理中，欢迎通过邮箱联系交流。",
+    note: m.photo || m.bio ? undefined : "照片与详细简历正在整理中，欢迎通过邮箱联系交流。",
   })),
 ];
 

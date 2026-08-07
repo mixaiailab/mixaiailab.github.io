@@ -68,7 +68,7 @@ const profileSections = sections
 						<p class="profile-title">{member.title ?? member.degree ?? ""}</p>
 					</div>
 					<div class="profile-tags">
-						{isFaculty && <span class="profile-tag profile-tag--solid" style={{ backgroundColor: accent, color: "#fff" }}>PI</span>}
+						{isFaculty && <span class="profile-tag profile-tag--solid" style={{ backgroundColor: accent, color: "#fff" }}>{member.badge ?? "PI"}</span>}
 						{member.degree && <span class="profile-tag">{member.degree}</span>}
 						{research ? <span class="profile-tag">{research}</span> : <span class="profile-tag profile-tag--dashed">研究方向 · 待补充</span>}
 					</div>
@@ -89,6 +89,13 @@ const profileSections = sections
 				</div>
 			</header>
 
+			{member.homepage && (
+				<a href={member.homepage} target="_blank" rel="noopener" class="profile-homepage">
+					<Icon name="material-symbols:link-rounded" class="profile-homepage-icon" />
+					个人主页
+					<Icon name="fa6-solid:arrow-up-right-from-square" class="profile-homepage-icon" />
+				</a>
+			)}
 			{member.bio && <p class="profile-bio">{member.bio}</p>}
 			{member.note && <div class="profile-note">{member.note}</div>}
 
@@ -147,6 +154,31 @@ const profileSections = sections
 	line-height: 1.85;
 	color: var(--text-secondary);
 }
+	.profile-homepage {
+		margin-top: 1.6rem;
+		display: inline-flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.45rem 1rem;
+		border-radius: 999px;
+		font-family: "JetBrains Mono Variable", ui-monospace, monospace;
+		font-size: 0.82rem;
+		color: var(--accent-blue);
+		border: 1px solid color-mix(in srgb, var(--accent-blue) 40%, transparent);
+		background: color-mix(in srgb, var(--accent-blue) 6%, transparent);
+		text-decoration: none;
+		transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+	}
+	.profile-homepage:hover {
+		color: var(--accent-blue);
+		border-color: var(--accent-blue);
+		background: color-mix(in srgb, var(--accent-blue) 12%, transparent);
+	}
+	.profile-homepage .profile-homepage-icon {
+		width: 1rem;
+		height: 1rem;
+		fill: currentColor;
+	}
 .profile-note {
 	margin-top: 1.6rem;
 	padding: 0.9rem 1.15rem;
