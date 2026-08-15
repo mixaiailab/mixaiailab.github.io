@@ -28,6 +28,7 @@ export const faculty: Member[] = [
     id: "zeng-dong",
     name: "曾栋",
     title: "副研究员 / 硕士生导师",
+    photo: "/images/members/PI-zengdong.jpg",
     email: "zd1989@smu.edu.cn",
     phone: "",
     research: "高端医学X射线CT成像方法与技术",
@@ -68,6 +69,7 @@ export const faculty: Member[] = [
     name: "马建华",
     title: "教授 / 博士生导师 ",
     email: "jhma@smu.edu.cn",
+    photo: "/images/members/PI-majianhua.jpg",
     phone: "",
     research: "高端医学CT成像与影像分析",
     color: "#D94848",
@@ -120,6 +122,7 @@ export const faculty: Member[] = [
   {
     id: "bian-zhaoying",
     name: "边兆英",
+    photo: "/images/members/PI-bianzhaoying.jpg",
     title: "副教授 / 硕士生导师",
     email: "zybian@smu.edu.cn",
     phone: "020-62789313",
@@ -158,44 +161,45 @@ export const faculty: Member[] = [
 ];
 
 export const phdStudents: Member[] = [
-  { id: "stu-wanghao", name: "王昊", degree: "博士研究生", photo: "/images/members/wanghao.jpg", research: "静态CT重建理论和算法、低剂量CT多机构协作学习、AI医学诊断分析", bio: "拥有无人机航拍技术、医工竞赛和创业比赛团队组织经验、服务器管理经验、算法工程岗位实习经历和学院骨干工作经验。", email: "wang_hao@smu.edu.cn" },
-  { id: "stu-liaojingyi", name: "廖静怡", degree: "博士研究生", photo: "", research: "", email: "liaojingyi@smu.edu.cn" },
+  { id: "stu-wanghao", name: "王昊", degree: "博士研究生", photo: "/images/members/stu-wanghao.jpg", research: "静态CT重建理论和算法、低剂量CT多机构协作学习、AI医学诊断分析", bio: "拥有无人机航拍技术、医工竞赛和创业比赛团队组织经验、服务器管理经验、算法工程岗位实习经历和学院骨干工作经验。", email: "wang_hao@smu.edu.cn" },
+  { id: "stu-liaojingyi", name: "廖静怡", degree: "博士研究生", photo: "/images/members/stu-liaojingyi.jpg", research: "基于人工智能的医学成像与病理分析技术研究", bio: "南方医科大学博士研究生在读，研究方向为基于人工智能的医学CBCT成像与消化道病理分析研究，目前已发表SCI期刊论文1篇、EI会议论文5篇，并参与2项国家重点研发计划课题。曾获南方医科大学第九届中国国际“互联网+”大学生创新创业大赛银奖、2023年“挑战杯”南方医科大学学术科技作品竞赛优胜奖、2023年南方医科大学“优秀研究生”荣誉称号。", email: "1jy@smu.edu.cn" },
 ];
+
 
 // 硕士研究生分为三个年级（行）展示，按拼音首字母排序；不对外显示真实年级。
 const masterRow1: Member[] = [
-  { id: "stu-caoboxuan", name: "曹博宣", degree: "硕士研究生", photo: "", research: "", email: "caoboxuan@smu.edu.cn" },
-  { id: "stu-houhaomin", name: "侯浩民", degree: "硕士研究生", photo: "", research: "", email: "houhaomin@smu.edu.cn" },
-  { id: "stu-kongdeyang", name: "孔德阳", degree: "硕士研究生", photo: "", research: "", email: "kongdeyang@smu.edu.cn" },
-  { id: "stu-liyule", name: "李玉乐", degree: "硕士研究生", photo: "", research: "", email: "liyule@smu.edu.cn" },
-  { id: "stu-mengxiao", name: "孟筱", degree: "硕士研究生", photo: "", research: "", email: "mengxiao@smu.edu.cn" },
-  { id: "stu-wangyankun", name: "王延坤", degree: "硕士研究生", photo: "", research: "", email: "wangyankun@smu.edu.cn" },
-  { id: "stu-wujunhao", name: "吴君浩", degree: "硕士研究生", photo: "/images/members/wujunhao.jpg", research: "静态CT重建理论和算法、低剂量CT重建", bio: "拥有CT重建算法推导、CT重建算法实现、生医工竞赛经验。", email: "wujunhao@smu.edu.cn" },
-  { id: "stu-xiaomeng", name: "肖萌", degree: "硕士研究生", photo: "", research: "", email: "xiaomeng@smu.edu.cn" },
+  { id: "stu-caoboxuan", name: "曹博宣", degree: "硕士研究生", photo: "/images/members/stu-caoboxuan.jpg", research: "", email: "caoboxuan@smu.edu.cn" },
+  { id: "stu-houhaomin", name: "侯浩民", degree: "硕士研究生", photo: "/images/members/stu-houhaomin.jpg", research: "新型CT蒙卡与解析建模、光子计数CT能谱优化", bio: "学习光子计数CT成像与能谱校正技术，完成从探测器建模、多能数据采集的全链路研发，拥有临床设备QA、QC经验、医工竞赛经验和放疗相关实习经历。", email: "houhm@smu.edu.cn" },
+  { id: "stu-kongdeyang", name: "孔德阳", degree: "硕士研究生", photo: "/images/members/stu-kongdeyang.jpg", research: "静态CT重建理论与算法、深度学习在医学成像中的应用", bio: "南医大生物医学工程硕士研究生，爱好摄影，多次参加医工竞赛并获奖，具有丰富的科研项目落地与团队协作经验。", email: "kongdy@smu.edu.cn" },
+  { id: "stu-liyule", name: "李玉乐", degree: "硕士研究生", photo: "/images/members/stu-liyule.jpg", research: "探源一体成像系统、光源最优展布理论、蒙特卡洛物理仿真", email: "ylli@smu.edu.cn" },
+  { id: "stu-mengxiao", name: "孟筱", degree: "硕士研究生", photo: "/images/members/stu-mengxiao.jpg", research: "深度学习在医学影像中的应用", email: "mx_1125@smu.edu.cn" },
+  { id: "stu-wangyankun", name: "王延坤", degree: "硕士研究生", photo: "/images/members/stu-wangyankun.jpg", research: "基于物理模型与深度学习的静态CT散射校正研究", email: "ykwang@smu.edu.cn" },
+  { id: "stu-wujunhao", name: "吴君浩", degree: "硕士研究生", photo: "/images/members/stu-wujunhao.jpg", research: "静态CT重建理论和算法、低剂量CT重建", bio: "拥有CT重建算法推导、CT重建算法实现、生医工竞赛经验。", email: "wujunhao@smu.edu.cn" },
+  { id: "stu-xiaomeng", name: "肖萌", degree: "硕士研究生", photo: "/images/members/stu-xiaomeng.png", research: "心肌灌注成像的图像处理与定量分析", email: "xiao_m@smu.edu.cn" },
 ];
 
 const masterRow2: Member[] = [
-  { id: "stu-chenqiule", name: "陈秋乐", degree: "硕士研究生", photo: "", research: "", email: "chenqiule@smu.edu.cn" },
-  { id: "stu-gaoyuanxiang", name: "高远翔", degree: "硕士研究生", photo: "", research: "", email: "gaoyuanxiang@smu.edu.cn" },
-  { id: "stu-jianglin", name: "江林", degree: "硕士研究生", photo: "", research: "", email: "jianglin@smu.edu.cn" },
-  { id: "stu-liuyiwei", name: "刘逸炜", degree: "硕士研究生", photo: "", research: "", email: "liuyiwei@smu.edu.cn" },
-  { id: "stu-liuyue", name: "刘悦", degree: "硕士研究生", photo: "", research: "", email: "liuyue@smu.edu.cn" },
-  { id: "stu-wutianyang", name: "吴天洋", degree: "硕士研究生", photo: "", research: "", email: "wutianyang@smu.edu.cn" },
-  { id: "stu-xujiatong", name: "许佳彤", degree: "硕士研究生", photo: "", research: "", email: "xujiatong@smu.edu.cn" },
-  { id: "stu-yangfangyu", name: "杨芳雨", degree: "硕士研究生", photo: "", research: "", email: "yangfangyu@smu.edu.cn" },
-  { id: "stu-yebaihong", name: "叶柏宏", degree: "硕士研究生", photo: "", research: "", email: "yebaihong@smu.edu.cn" },
+  { id: "stu-chenqiule", name: "陈秋乐", degree: "硕士研究生", photo: "/images/members/stu-chenqiule.jpg", research: "CT成像理论研究", email: "chenqiule@smu.edu.cn" },
+  { id: "stu-gaoyuanxiang", name: "高远翔", degree: "硕士研究生", photo: "/images/members/stu-gaoyuanxiang.jpg", research: "深度学习在医学影像重建中的应用", bio: "热爱学习", email: "yuanxiang499@qq.com" },
+  { id: "stu-jianglin", name: "江林", degree: "硕士研究生", photo: "/images/members/stu-jianglin.jpg", research: "深度学习模型轻量化与压缩、FPGA嵌入式平台算法部署", bio: "拥有创新创业竞赛经验、硬件驱动开发实习经验。", email: "jl1205@smu.edu.cn" },
+  { id: "stu-liuyiwei", name: "刘逸炜", degree: "硕士研究生", photo: "/images/members/stu-liuyiwei.jpg", research: "医学智能体", email: "liuyiwei@smu.edu.cn" },
+  { id: "stu-liuyue", name: "刘悦", degree: "硕士研究生", photo: "/images/members/stu-liuyue.jpg", research: "PCCT仿真方法研究", email: "liuyue1004@smu.edu.cn" },
+  { id: "stu-wutianyang", name: "吴天洋", degree: "硕士研究生", photo: "/images/members/stu-wutianyang.jpg", research: "医学影像在深度学习中的应用", bio: "这个网站的主要开发者之一", email: "wutianyangabc@126.com" },
+  { id: "stu-xujiatong", name: "许佳彤", degree: "硕士研究生", photo: "/images/members/stu-xujiatong.jpg", research: "深度学习在医学影像中的应用", email: "xujiatong1019@163.com" },
+  { id: "stu-yangfangyu", name: "杨芳雨", degree: "硕士研究生", photo: "/images/members/stu-yangfangyu.jpg", research: "深度学习在影像方面的应用", email: "yangfy333@163.com" },
+  { id: "stu-yebaihong", name: "叶柏宏", degree: "硕士研究生", photo: "/images/members/stu-yebaihong.jpg", research: "静态CT成像架构及重建算法设计、CT蒙卡仿真", bio: "拥有CT成像蒙卡仿真、架构设计及重建算法实现经验。", email: "ybh22520356@smu.edu.cn" },
 ];
 
 const masterRow3: Member[] = [
-  { id: "stu-housong", name: "侯嵩", degree: "硕士研究生", photo: "", research: "", email: "housong@smu.edu.cn" },
-  { id: "stu-libingchen", name: "李冰晨", degree: "硕士研究生", photo: "", research: "", email: "libingchen@smu.edu.cn" },
-  { id: "stu-lijiaqi", name: "李嘉琦", degree: "硕士研究生", photo: "", research: "", email: "lijiaqi@smu.edu.cn" },
-  { id: "stu-luoxiaohong", name: "罗小宏", degree: "硕士研究生", photo: "", research: "", email: "luoxiaohong@smu.edu.cn" },
-  { id: "stu-qianyifan", name: "钱祎璠", degree: "硕士研究生", photo: "", research: "", email: "qianyifan@smu.edu.cn" },
-  { id: "stu-xiaojinghao", name: "肖敬浩", degree: "硕士研究生", photo: "", research: "", email: "xiaojinghao@smu.edu.cn" },
-  { id: "stu-xiemenglan", name: "谢梦兰", degree: "硕士研究生", photo: "", research: "", email: "xiemenglan@smu.edu.cn" },
-  { id: "stu-xuyanghao", name: "徐洋浩", degree: "硕士研究生", photo: "", research: "", email: "xuyanghao@smu.edu.cn" },
-  { id: "stu-xuyaxuan", name: "徐雅宣", degree: "硕士研究生", photo: "", research: "", email: "xuyaxuan@smu.edu.cn" },
+  { id: "stu-housong", name: "侯嵩", degree: "硕士研究生", photo: "/images/members/stu-housong.jpg", research: "", email: "housong@smu.edu.cn" },
+  { id: "stu-libingchen", name: "李冰晨", degree: "硕士研究生", photo: "/images/members/stu-libingchen.jpg", research: "", email: "libingchen@smu.edu.cn" },
+  { id: "stu-lijiaqi", name: "李嘉琦", degree: "硕士研究生", photo: "/images/members/stu-lijiaqi.jpg", research: "", email: "lijiaqi@smu.edu.cn" },
+  { id: "stu-luoxiaohong", name: "罗小宏", degree: "硕士研究生", photo: "/images/members/stu-luoxiaohong.jpg", research: "", email: "luoxiaohong@smu.edu.cn" },
+  { id: "stu-qianyifan", name: "钱祎璠", degree: "硕士研究生", photo: "/images/members/stu-qianyifan.jpg", research: "", email: "qianyifan@smu.edu.cn" },
+  { id: "stu-xiaojinghao", name: "肖敬浩", degree: "硕士研究生", photo: "/images/members/stu-xiaojinghao.jpg", research: "", email: "xiaojinghao@smu.edu.cn" },
+  { id: "stu-xiemenglan", name: "谢梦兰", degree: "硕士研究生", photo: "/images/members/stu-xiemenglan.jpg", research: "", email: "xiemenglan@smu.edu.cn" },
+  { id: "stu-xuyanghao", name: "徐洋浩", degree: "硕士研究生", photo: "/images/members/stu-xuyanghao.jpg", research: "", email: "xuyanghao@smu.edu.cn" },
+  { id: "stu-xuyaxuan", name: "徐雅宣", degree: "硕士研究生", photo: "/images/members/stu-xuyaxuan.jpg", research: "", email: "xuyaxuan@smu.edu.cn" },
 ];
 
 export const masterStudentGroups: Member[][] = [masterRow1, masterRow2, masterRow3];
@@ -203,15 +207,67 @@ export const masterStudentGroups: Member[][] = [masterRow1, masterRow2, masterRo
 export const masterStudents: Member[] = [...masterRow1, ...masterRow2, ...masterRow3];
 
 // 毕业成员（简洁名单，不生成详情页）
-export const graduates: Member[] = [
-  { id: "grd-guoyi", name: "郭义", degree: "博士", photo: "", research: "", email: "guoyi@smu.edu.cn" },
-  { id: "grd-jianghaotao", name: "江浩涛", degree: "硕士", photo: "", research: "", email: "jianghaotao@smu.edu.cn" },
-  { id: "grd-liying", name: "李颖", degree: "硕士", photo: "", research: "", email: "liying@smu.edu.cn" },
-  { id: "grd-mengmingqiang", name: "蒙铭强", degree: "博士", photo: "", research: "", email: "mengmingqiang@smu.edu.cn" },
-  { id: "grd-songhanxiao", name: "宋含笑", degree: "硕士", photo: "", research: "", email: "songhanxiao@smu.edu.cn" },
-  { id: "grd-yuyehui", name: "余烨辉", degree: "硕士", photo: "", research: "", email: "yuyehui@smu.edu.cn" },
-  { id: "grd-zengcuidie", name: "曾翠蝶", degree: "硕士", photo: "", research: "", email: "zengcuidie@smu.edu.cn" },
-  { id: "grd-zhangyujian", name: "张宇健", degree: "硕士", photo: "", research: "", email: "zhangyujian@smu.edu.cn" },
+export const graduateGroups: { year: string; items: { id: string; name: string; degree?: string }[] }[] = [
+  {
+    year: "2022",
+    items: [
+      { id: "grd-lisui", name: "李穗" },
+      { id: "grd-hefawei", name: "和法伟" },
+      { id: "grd-zhuqisen", name: "朱其森" },
+      { id: "grd-wanglei", name: "王蕾" },
+      { id: "grd-fushuai", name: "符帅" },
+    ],
+  },
+  {
+    year: "2023",
+    items: [
+      { id: "grd-lidanyang", name: "李丹阳" },
+      { id: "grd-duanzheng", name: "段政" },
+      { id: "grd-zhouhao", name: "周昊" },
+      { id: "grd-hongzixuan", name: "洪梓璇" },
+    ],
+  },
+  {
+    year: "2024",
+    items: [
+      { id: "grd-zhumanman", name: "朱曼曼" },
+      { id: "grd-pengshengwang", name: "彭声旺" },
+      { id: "grd-linzongyue", name: "林宗悦" },
+      { id: "grd-chenshixuan", name: "陈世宣" },
+      { id: "grd-wangchen", name: "汪辰" },
+      { id: "grd-songyuyan", name: "宋雨烟" },
+      { id: "grd-yaotianyi", name: "姚添译" },
+    ],
+  },
+  {
+    year: "2025",
+    items: [
+      { id: "grd-mengmingqiang", name: "蒙铭强" },
+      { id: "grd-zengzhixiong", name: "曾智雄" },
+      { id: "grd-liwenwei", name: "李文伟" },
+      { id: "grd-zengcuidie", name: "曾翠蝶" },
+      { id: "grd-zhangxiaoyu", name: "张晓瑜" },
+      { id: "grd-masiyuan", name: "马思源" },
+      { id: "grd-liaojingyi", name: "廖静怡" },
+      { id: "grd-shengjiabing", name: "绳家兵" },
+    ],
+  },
+  {
+    year: "2026",
+    items: [
+      { id: "grd-guoyi", name: "郭义" },
+      { id: "grd-maozerui", name: "毛泽睿" },
+      { id: "grd-chenzeying", name: "陈泽滢" },
+      { id: "grd-wenzihao", name: "温子皓" },
+      { id: "grd-liying", name: "李颖" },
+      { id: "grd-jianghaotao", name: "江浩涛" },
+      { id: "grd-yuyehui", name: "余烨辉" },
+      { id: "grd-zhangyujian", name: "张宇健" },
+      { id: "grd-huangsiman", name: "黄锶熳" },
+      { id: "grd-songhanxiao", name: "宋含笑"},
+      { id: "grd-shihuaxian", name: "石华仙" },
+    ],
+  },
 ];
 
 export const members: Member[] = [

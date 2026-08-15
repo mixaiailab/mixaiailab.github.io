@@ -5,18 +5,18 @@ import { url } from "../utils/url-utils";
 const currentYear = new Date().getFullYear();
 ---
 
-<!-- 设计规划 §6.F：页脚为「深色沉浸区」，刻意常驻深色、不随主题翻转；
-     以下十六进制色与 variables.styl 深色主题值保持一致 -->
-<footer class="bg-[#101111] text-[#F3F1EB] font-semibold mt-24 md:mt-36 mx-4 md:mx-6 lg:mx-8 rounded-[2rem] md:rounded-[2.5rem] shadow-[0_24px_60px_-20px_rgba(0,0,0,0.5)]">
+<!-- 页脚撞色设计：浅色模式为深色页脚、深色模式为浅色页脚，与页面主体形成对比。
+     颜色由下方 --footer-* 变量控制，随主题自动切换。 -->
+<footer class="bg-[var(--footer-bg)] text-[var(--footer-text)] font-semibold mt-24 md:mt-36 mx-4 md:mx-6 lg:mx-8 rounded-[2rem] md:rounded-[2.5rem] border border-[var(--footer-line)] shadow-[0_24px_60px_-24px_rgba(22,22,22,0.4)]">
     <div class="max-w-[var(--page-width)] mx-auto px-4 md:px-6 lg:px-8 py-16 md:py-24">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-24">
             <!-- 左侧：合作与招生 -->
             <div>
-                <h3 class="text-2xl font-bold mb-4 text-white">{siteConfig.title}</h3>
-                <p class="text-[#A4A39E] leading-relaxed mb-6">
-                    欢迎具有<strong class="text-[#F3F1EB] font-bold">生物医学工程、计算机与人工智能、应用数学、电子信息</strong>等背景的推免/统考硕士生及科研实习生。
+                <h3 class="text-2xl font-bold mb-4 text-[var(--footer-text)]">{siteConfig.title}</h3>
+                <p class="text-[var(--footer-muted)] leading-relaxed mb-6">
+                    欢迎具有<strong class="text-[var(--footer-text)] font-bold">生物医学工程、计算机与人工智能、应用数学、电子信息</strong>等背景的推免/统考硕士生及科研实习生。
                 </p>
-                <a href="/members/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-white/[0.12] text-[#F3F1EB] hover:bg-white/[0.12] transition group">
+                <a href="/members/" class="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-[var(--footer-line)] text-[var(--footer-text)] hover:bg-[var(--footer-hover)] transition group">
                     加入我们
                     <span class="transition-transform duration-300 group-hover:translate-x-1">→</span>
                 </a>
@@ -25,37 +25,55 @@ const currentYear = new Date().getFullYear();
             <!-- 右侧：联系方式 -->
             <div class="flex flex-col gap-6">
                 <div>
-                    <h4 class="text-sm font-mono tracking-[0.2em] text-[#A4A39E] mb-4 uppercase">联系方式</h4>
-                    <div class="space-y-2 text-[#A4A39E]">
-                        <p>邮箱：<a href="mailto:zd1989@smu.edu.cn" class="text-[#F3F1EB] hover:text-[var(--accent-blue)] transition">zd1989@smu.edu.cn</a></p>
+                    <h4 class="text-sm font-mono tracking-[0.2em] text-[var(--footer-muted)] mb-4 uppercase">联系方式</h4>
+                    <div class="space-y-2 text-[var(--footer-muted)]">
+                        <p>邮箱：<a href="mailto:zd1989@smu.edu.cn" class="text-[var(--footer-text)] hover:text-[var(--accent-blue)] transition">zd1989@smu.edu.cn</a></p>
                         <p>地址：南方医科大学生物医学工程学院</p>
                     </div>
                 </div>
                 <div class="flex gap-6">
-                    <a href="https://github.com/mixaiailab" target="_blank" rel="noopener" class="text-[#A4A39E] hover:text-[var(--accent-blue)] transition text-sm font-mono tracking-wider">
+                    <a href="https://github.com/mixaiailab" target="_blank" rel="noopener" class="text-[var(--footer-muted)] hover:text-[var(--accent-blue)] transition text-sm font-mono tracking-wider">
                         GitHub →
                     </a>
-                    <a href="https://www.smu.edu.cn" target="_blank" rel="noopener" class="text-[#A4A39E] hover:text-[var(--accent-blue)] transition text-sm font-mono tracking-wider">
+                    <a href="https://www.smu.edu.cn" target="_blank" rel="noopener" class="text-[var(--footer-muted)] hover:text-[var(--accent-blue)] transition text-sm font-mono tracking-wider">
                         学校官网 →
                     </a>
-                    <a href="https://portal.smu.edu.cn/swyxgcxy/" target="_blank" rel="noopener" class="text-[#A4A39E] hover:text-[var(--accent-blue)] transition text-sm font-mono tracking-wider">
+                    <a href="https://portal.smu.edu.cn/swyxgcxy/" target="_blank" rel="noopener" class="text-[var(--footer-muted)] hover:text-[var(--accent-blue)] transition text-sm font-mono tracking-wider">
                         学院官网 →
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="border-t border-white/[0.12] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[#A4A39E]">
+        <div class="border-t border-[var(--footer-line)] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-[var(--footer-muted)]">
             <div>
                 &copy; {currentYear} {profileConfig.name}. All Rights Reserved.
             </div>
             <div class="flex gap-4">
                 <a class="hover:text-[var(--accent-blue)] transition" target="_blank" href={url('rss.xml')}>RSS</a>
-                <span class="text-white/20">/</span>
+                <span class="text-[var(--footer-line)]">/</span>
                 <a class="hover:text-[var(--accent-blue)] transition" target="_blank" href={url('sitemap-index.xml')}>Sitemap</a>
-                <span class="text-white/20">/</span>
+                <span class="text-[var(--footer-line)]">/</span>
                 <span>Powered by <a class="hover:text-[var(--accent-blue)] transition" target="_blank" href="https://astro.build">Astro</a> & <a class="hover:text-[var(--accent-blue)] transition" target="_blank" href="https://github.com/saicaca/fuwari">Fuwari</a></span>
             </div>
         </div>
     </div>
 </footer>
+
+<style is:global>
+	:root {
+		--footer-bg: #101111;
+		--footer-text: #f3f1eb;
+		--footer-muted: #a4a39e;
+		--footer-line: rgba(255, 255, 255, 0.14);
+		--footer-hover: rgba(255, 255, 255, 0.1);
+	}
+
+	:root.dark {
+		--footer-bg: #f4f5f7;
+		--footer-text: #161616;
+		--footer-muted: #66645f;
+		--footer-line: rgba(22, 22, 22, 0.14);
+		--footer-hover: rgba(22, 22, 22, 0.08);
+	}
+</style>
