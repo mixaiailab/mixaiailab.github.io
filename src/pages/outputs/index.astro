@@ -3,6 +3,89 @@ import MainGridLayout from "../../layouts/MainGridLayout.astro";
 import { siteConfig } from "../../config";
 import { Icon } from "astro-icon/components";
 
+const papers = [
+  {
+    authors: "J. He, Y. Yang, Y. Wang, D. Zeng, Z. Bian, H. Zhang, et al.",
+    title: "Optimizing a parameterized plug-and-play ADMM for iterative low-dose CT reconstruction",
+    journal: "IEEE Transactions on Medical Imaging",
+    meta: "vol.38, no.2, pp.371-382",
+    year: "2018",
+    cites: 222,
+  },
+  {
+    authors: "H. Zhang, D. Zeng, H. Zhang, J. Wang, Z. Liang, and J. Ma",
+    title: "Applications of nonlocal means algorithm in low-dose X-ray CT image processing and reconstruction: a review",
+    journal: "Medical Physics",
+    meta: "vol.44, no.3, pp.1168-1185",
+    year: "2017",
+    cites: 134,
+  },
+  {
+    authors: "T. Lan, S. Kuang, P. Liang, C. Ning, Q. Li, L. Wang, et al.",
+    title: "MRI-based deep learning and radiomics for prediction of occult cervical lymph node metastasis and prognosis in early-stage oral and oropharyngeal squamous cell carcinoma: a diagnostic study",
+    journal: "International Journal of Surgery",
+    meta: "vol.110, no.8, pp.4648",
+    year: "2024",
+    cites: 99,
+  },
+  {
+    authors: "Q. Xie, D. Zeng, Q. Zhao, D. Meng, Z. Xu, Z. Liang, and J. Ma",
+    title: "Robust low-dose CT sinogram preprocessing via exploiting noise-generating mechanism",
+    journal: "IEEE Transactions on Medical Imaging",
+    meta: "vol.36, no.12, pp.2487-2498",
+    year: "2017",
+    cites: 97,
+  },
+  {
+    authors: "J. Li, S. Fu, Z. Gong, Z. Zhu, D. Zeng, P. Cao, et al.",
+    title: "MRI-based texture analysis of infrapatellar fat pad to predict knee osteoarthritis incidence",
+    journal: "Radiology",
+    meta: "vol.304, no.3, pp.611-621",
+    year: "2022",
+    cites: 96,
+  },
+  {
+    authors: "H. Zhang, J. Wang, D. Zeng, X. Tao, and J. Ma",
+    title: "Regularization strategies in statistical image reconstruction of low-dose x-ray CT: A review",
+    journal: "Medical Physics",
+    meta: "vol.45, no.10, pp.e886-e907",
+    year: "2018",
+    cites: 94,
+  },
+  {
+    authors: "S. Li, D. Zeng, J. Peng, Z. Bian, H. Zhang, Q. Xie, et al.",
+    title: "An efficient iterative cerebral perfusion CT reconstruction via low-rank tensor decomposition with spatial-temporal total variation regularization",
+    journal: "IEEE Transactions on Medical Imaging",
+    meta: "vol.38, no.2, pp.360-370",
+    year: "2018",
+    cites: 60,
+  },
+  {
+    authors: "A. Xuan, H. Chen, T. Chen, J. Li, S. Lu, T. Fan, et al.",
+    title: "The application of machine learning in early diagnosis of osteoarthritis: a narrative review",
+    journal: "Therapeutic Advances in Musculoskeletal Disease",
+    meta: "vol.15, 1759720X231158198",
+    year: "2023",
+    cites: 57,
+  },
+  {
+    authors: "H. Zhang, D. Zeng, J. Lin, H. Zhang, Z. Bian, J. Huang, et al.",
+    title: "Iterative reconstruction for dual energy CT with an average image-induced nonlocal means regularization",
+    journal: "Physics in Medicine & Biology",
+    meta: "vol.62, no.13, pp.5556-5574",
+    year: "2017",
+    cites: 55,
+  },
+  {
+    authors: "Y. Wang, Y. Liao, Y. Zhang, J. He, S. Li, Z. Bian, et al.",
+    title: "Iterative quality enhancement via residual-artifact learning networks for low-dose CT",
+    journal: "Physics in Medicine & Biology",
+    meta: "vol.63, no.21, 215004",
+    year: "2018",
+    cites: 51,
+  },
+];
+
 const achievements = [
   {
     type: "获奖",
@@ -120,6 +203,33 @@ const patents = [
   { type: "发明专利", inventors: "曾栋、陈世宣、马建华、边兆英", title: "一种用于多种成像几何的云影像中心的CT成像方法及系统", number: "CN202310098648.6", date: "2023.02" },
   { type: "发明专利", inventors: "马建华、何基、边兆英、曾栋、黄静", title: "一种基于卷积神经网络的CT图像重建方法", number: "CN201710767474.2", date: "2017.08" },
 ];
+const studentAwards = [
+  { project: "双域数据特征驱动的低剂量CT图像智能重建模型", competition: "第七届全国大学生生物医学工程创新设计竞赛", award: "一等奖", year: "2022" },
+  { project: "双域数据特征驱动的低剂量CT图像智能重建模型", competition: "第一届广东省大学生生物医学工程创新设计竞赛", award: "三等奖", year: "2022" },
+  { project: "", competition: "“华为杯”第二十届中国研究生数学建模竞赛", award: "三等奖", year: "2023" },
+  { project: "自意识调控的分布式CT智能成像方法", competition: "第八届全国大学生生物医学工程创新设计竞赛", award: "三等奖", year: "2023" },
+  { project: "基于联邦学习的自由机型CT图像智能重建网络", competition: "第八届全国大学生生物医学工程创新设计竞赛", award: "三等奖", year: "2023" },
+  { project: "基于反投影张量特征的CT腹部多脏器智能识别方法", competition: "第二届广东省大学生生物医学工程创新创业设计竞赛", award: "三等奖", year: "2023" },
+  { project: "影云共享：新时代CT智能成像先驱者", competition: "第九届中国国际“互联网+”大学生创新创业大赛", award: "银奖", year: "2023" },
+  { project: "影云共享：新时代CT智能成像先驱者", competition: "第九届中国国际“互联网+”大学生创新创业大赛广东省分赛", award: "铜奖", year: "2023" },
+  { project: "影云共享——新时代CT智能成像先驱者", competition: "第七届“创客广东”生物医药与健康中小企业创新创业大赛高校赛道", award: "三等奖", year: "2023" },
+  { project: "影云共享——基于联邦学习的跨机制医疗CT智能成像系统", competition: "挑战杯南方医科大学大学生课外学术科技作品竞赛", award: "优胜奖", year: "2023" },
+  { project: "CT Metal Artifact Reduction Challenge (CT-MAR)", competition: "AAPM 2024 Grand Challenge", award: "获奖", year: "2024" },
+  { project: "跨机构自适应协作学习的腹部多脏器CT图像分割算法", competition: "第三届广东省大学生生物医学工程创新创业设计竞赛", award: "二等奖", year: "2024" },
+  { project: "动态循环联邦学习多机构智能分类方法", competition: "第三届广东省大学生生物医学工程创新创业设计竞赛", award: "三等奖", year: "2024" },
+  { project: "光子计数CT探测器失真建模与智能校正方法研究", competition: "第十届全国大学生生物医学工程创新创业竞赛", award: "一等奖", year: "2025" },
+  { project: "基于多元数据驱动的多模态学习一体化CT重建网络", competition: "第十届全国大学生生物医学工程创新创业竞赛", award: "二等奖", year: "2025" },
+  { project: "基于多视角特征学习与时空感知的数字减影血管造影成像系统", competition: "第十届全国大学生生物医学工程创新创业竞赛", award: "二等奖", year: "2025" },
+  { project: "基于多元数据驱动的多模态学习一体化CT重建网络", competition: "第四届广东省生物医学工程创新创业竞赛", award: "二等奖", year: "2025" },
+  { project: "基于集成机器学习的口腔癌患者生存预测模型", competition: "第四届广东省生物医学工程创新创业设计竞赛", award: "三等奖", year: "2025" },
+  { project: "新型探测器与射线源一体化CT成像系统", competition: "第十一届全国大学生生物医学工程创新创业竞赛", award: "二等奖", year: "2026" },
+  { project: "成像机制引导的深硅光子计数CT建模与校正优化方法研究", competition: "第十一届全国大学生生物医学工程创新创业竞赛", award: "三等奖", year: "2026" },
+  { project: "OmniDocX 基于大语言模型的多功能胸腹部CT智能助手", competition: "第十一届全国大学生生物医学工程创新创业竞赛", award: "三等奖", year: "2026" },
+  { project: "基于专家混合机制的跨机型多任务CT影像协调算法", competition: "第十一届全国大学生生物医学工程创新创业竞赛", award: "三等奖", year: "2026" },
+  { project: "桌面CT与3D扫描", competition: "第十一届全国大学生生物医学工程创新创业竞赛", award: "三等奖", year: "2026" },
+  { project: "基于流变信号建模的平扫CT计算血流参数图模型", competition: "第十一届全国大学生生物医学工程创新创业竞赛", award: "三等奖", year: "2026" },
+  { project: "基于光子计数CT双通道输入的心肌灌注定量", competition: "第五届广东省大学生生物医学工程创新创业竞赛", award: "三等奖", year: "2026" },
+];
 ---
 
 <MainGridLayout title={`科研成果 - ${siteConfig.title}`} description="课题组在低剂量CT成像、光子计数能谱CT、联邦学习医学影像等领域取得了一系列重要成果。">
@@ -141,21 +251,14 @@ const patents = [
       代表性论文
     </h2>
     <div class="space-y-3">
-      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
-        <p class="text-[var(--text-primary)]">D. Zeng, L. Yao, Y. Ge, et al., <span class="italic">"Full-Spectrum-Knowledge-Aware Tensor Model for Energy-Resolved CT Iterative Reconstruction"</span>, <strong>IEEE Transactions on Medical Imaging</strong>, vol.39, no.9, pp.2831-2843, 2020.</p>
-      </div>
-      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
-        <p class="text-[var(--text-primary)]">J. He, Y. Wang, and J. Ma*, <span class="italic">"Radon Inversion via Deep Learning"</span>, <strong>IEEE Transactions on Medical Imaging</strong>, vol.39, no.6, pp.2076-2087, 2020.</p>
-      </div>
-      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
-        <p class="text-[var(--text-primary)]">S. Li, D. Zeng, J. Peng, et al., <span class="italic">"An Efficient Iterative Cerebral Perfusion CT Reconstruction via Low-Rank Tensor Decomposition"</span>, <strong>IEEE Transactions on Medical Imaging</strong>, vol.38, no.2, pp.360-370, 2018.</p>
-      </div>
-      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
-        <p class="text-[var(--text-primary)]">Z. Bian, D. Zeng, Z. Zhang, et al., <span class="italic">"Low-dose dynamic myocardial perfusion CT imaging using a motion adaptive sparsity prior"</span>, <strong>Medical Physics</strong>, 2017, 44(9): e188~e201.</p>
-      </div>
-      <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
-        <p class="text-[var(--text-primary)]">J. Ma, Z. Liang, Y. Fan, et al., <span class="italic">"Variance analysis of x-ray CT sinograms in the presence of electronic noise background"</span>, <strong>Medical Physics</strong>, vol.39, no.7, pp.4051-4065, 2012.</p>
-      </div>
+      {papers.map((p) => (
+        <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)] flex flex-col sm:flex-row sm:items-start gap-3">
+          <p class="text-[var(--text-primary)] flex-1">
+            {p.authors}, <span class="italic">"{p.title}"</span>, <strong>{p.journal}</strong>, {p.meta}, {p.year}.
+          </p>
+          <span class="shrink-0 self-start px-2.5 py-1 rounded-full text-xs font-mono text-[var(--accent-blue-navy)] bg-[var(--accent-blue-navy)]/10 whitespace-nowrap">被引 {p.cites} 次</span>
+        </div>
+      ))}
     </div>
   </section>
 
@@ -193,17 +296,30 @@ const patents = [
     <div class="space-y-4">
       {projects.map((p) => (
         <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
-          <div class="flex flex-wrap items-center gap-2 mb-2">
+          <div class="flex flex-wrap items-center gap-2">
             <span class="px-3 py-0.5 rounded-full text-xs font-mono text-[var(--accent-blue)] bg-[var(--accent-blue)]/10">{p.type}</span>
             <span class="text-xs font-mono text-[var(--text-secondary)]">{p.period}</span>
           </div>
-          <div>
-            <h4 class="font-bold text-[var(--text-primary)] leading-relaxed">{p.name}</h4>
-            <div class="flex flex-wrap gap-x-4 gap-y-1 mt-2 text-sm text-[var(--text-secondary)]">
-              <span>编号：{p.source}</span>
-              <span>负责人：{p.pi}</span>
-            </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- 学生参赛获奖情况 -->
+  <section class="pb-24">
+    <h2 class="text-2xl font-bold text-[var(--text-primary)] mb-8 flex items-center gap-3">
+      <span class="w-1 h-6 bg-[var(--accent-blue-light)] rounded-full"></span>
+      学生参赛获奖情况
+    </h2>
+    <div class="space-y-4">
+      {studentAwards.map((a) => (
+        <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
+          <div class="flex flex-wrap items-center gap-2 mb-2">
+            <span class="px-3 py-0.5 rounded-full text-xs font-mono text-[var(--accent-blue-light)] bg-[var(--accent-blue-light)]/10">{a.award}</span>
+            <span class="text-xs font-mono text-[var(--text-secondary)]">{a.year}</span>
           </div>
+          <h4 class="font-bold text-[var(--text-primary)] leading-relaxed">{a.project || a.competition}</h4>
+          {a.project && <div class="text-sm text-[var(--text-secondary)] mt-2">{a.competition}</div>}
         </div>
       ))}
     </div>

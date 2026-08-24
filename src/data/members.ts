@@ -168,7 +168,7 @@ export const phdStudents: Member[] = [
 
 // 硕士研究生分为三个年级（行）展示，按拼音首字母排序；不对外显示真实年级。
 const masterRow1: Member[] = [
-  { id: "stu-caoboxuan", name: "曹博宣", degree: "硕士研究生", photo: "/images/members/stu-caoboxuan.jpg", research: "", email: "caoboxuan@smu.edu.cn" },
+  { id: "stu-caoboxuan", name: "曹博宣", degree: "硕士研究生", photo: "/images/members/stu-caoboxuan.jpg", research: "智能CT成像理论与方法、灌注CT、CT体模制作与设备质控", bio: "在研课题为静态CT颅脑灌注成像协议设计、3D打印多病灶仿真灌注物理体模。拥有医工竞赛和创业比赛团队组织经验、三甲医院影像科合作经历、三甲医院放疗科实习经历。", email: "caoboxuan2002@smu.edu.cn" },
   { id: "stu-houhaomin", name: "侯浩民", degree: "硕士研究生", photo: "/images/members/stu-houhaomin.jpg", research: "新型CT蒙卡与解析建模、光子计数CT能谱优化", bio: "学习光子计数CT成像与能谱校正技术，完成从探测器建模、多能数据采集的全链路研发，拥有临床设备QA、QC经验、医工竞赛经验和放疗相关实习经历。", email: "houhm@smu.edu.cn" },
   { id: "stu-kongdeyang", name: "孔德阳", degree: "硕士研究生", photo: "/images/members/stu-kongdeyang.jpg", research: "静态CT重建理论与算法、深度学习在医学成像中的应用", bio: "南医大生物医学工程硕士研究生，爱好摄影，多次参加医工竞赛并获奖，具有丰富的科研项目落地与团队协作经验。", email: "kongdy@smu.edu.cn" },
   { id: "stu-liyule", name: "李玉乐", degree: "硕士研究生", photo: "/images/members/stu-liyule.jpg", research: "探源一体成像系统、光源最优展布理论、蒙特卡洛物理仿真", email: "ylli@smu.edu.cn" },
