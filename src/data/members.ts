@@ -161,7 +161,7 @@ export const faculty: Member[] = [
 ];
 
 export const phdStudents: Member[] = [
-  { id: "stu-wanghao", name: "王昊", degree: "博士研究生", photo: "/images/members/stu-wanghao.jpg", research: "静态CT重建理论和算法、低剂量CT多机构协作学习、AI医学诊断分析", bio: "拥有无人机航拍技术、医工竞赛和创业比赛团队组织经验、服务器管理经验、算法工程岗位实习经历和学院骨干工作经验。", email: "wang_hao@smu.edu.cn" },
+  { id: "stu-wanghao", name: "王昊", degree: "博士研究生", photo: "/images/members/stu-wanghao.jpg", research: "静态CT重建理论和算法、低剂量CT多机构协作学习、AI医学诊断分析", bio: "南方医科大学生物医学工程专业硕博连读博士研究生，工学学士。主要从事静态CT重建理论与算法、多机构协作医学成像及医学影像人工智能研究，围绕非理想采样静态CT成像，开展多几何静态CT重建及解析模型与人工智能融合的智能重建方法研究，同时开展低剂量CT多机构协作学习与跨机型医学影像协调研究。以第一作者发表期刊论文3篇、会议论文5篇，并获国家奖学金、南方医科大学研究生一等奖学金、优秀研究生、第十届全国大学生生物医学工程创新设计竞赛二等奖及第九届中国国际“互联网+”大学生创新创业大赛广东省分赛铜奖等奖项。", email: "wang_hao@smu.edu.cn" },
   { id: "stu-liaojingyi", name: "廖静怡", degree: "博士研究生", photo: "/images/members/stu-liaojingyi.jpg", research: "基于人工智能的医学成像与病理分析技术研究", bio: "南方医科大学博士研究生在读，研究方向为基于人工智能的医学CBCT成像与消化道病理分析研究，目前已发表SCI期刊论文1篇、EI会议论文5篇，并参与2项国家重点研发计划课题。曾获南方医科大学第九届中国国际“互联网+”大学生创新创业大赛银奖、2023年“挑战杯”南方医科大学学术科技作品竞赛优胜奖、2023年南方医科大学“优秀研究生”荣誉称号。", email: "1jy@smu.edu.cn" },
 ];
 

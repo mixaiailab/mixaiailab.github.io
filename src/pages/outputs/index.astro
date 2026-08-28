@@ -3,87 +3,72 @@ import MainGridLayout from "../../layouts/MainGridLayout.astro";
 import { siteConfig } from "../../config";
 import { Icon } from "astro-icon/components";
 
-const papers = [
-  {
-    authors: "J. He, Y. Yang, Y. Wang, D. Zeng, Z. Bian, H. Zhang, et al.",
-    title: "Optimizing a parameterized plug-and-play ADMM for iterative low-dose CT reconstruction",
-    journal: "IEEE Transactions on Medical Imaging",
-    meta: "vol.38, no.2, pp.371-382",
-    year: "2018",
-    cites: 222,
-  },
-  {
-    authors: "H. Zhang, D. Zeng, H. Zhang, J. Wang, Z. Liang, and J. Ma",
-    title: "Applications of nonlocal means algorithm in low-dose X-ray CT image processing and reconstruction: a review",
-    journal: "Medical Physics",
-    meta: "vol.44, no.3, pp.1168-1185",
-    year: "2017",
-    cites: 134,
-  },
-  {
-    authors: "T. Lan, S. Kuang, P. Liang, C. Ning, Q. Li, L. Wang, et al.",
-    title: "MRI-based deep learning and radiomics for prediction of occult cervical lymph node metastasis and prognosis in early-stage oral and oropharyngeal squamous cell carcinoma: a diagnostic study",
-    journal: "International Journal of Surgery",
-    meta: "vol.110, no.8, pp.4648",
-    year: "2024",
-    cites: 99,
-  },
-  {
-    authors: "Q. Xie, D. Zeng, Q. Zhao, D. Meng, Z. Xu, Z. Liang, and J. Ma",
-    title: "Robust low-dose CT sinogram preprocessing via exploiting noise-generating mechanism",
-    journal: "IEEE Transactions on Medical Imaging",
-    meta: "vol.36, no.12, pp.2487-2498",
-    year: "2017",
-    cites: 97,
-  },
-  {
-    authors: "J. Li, S. Fu, Z. Gong, Z. Zhu, D. Zeng, P. Cao, et al.",
-    title: "MRI-based texture analysis of infrapatellar fat pad to predict knee osteoarthritis incidence",
-    journal: "Radiology",
-    meta: "vol.304, no.3, pp.611-621",
-    year: "2022",
-    cites: 96,
-  },
-  {
-    authors: "H. Zhang, J. Wang, D. Zeng, X. Tao, and J. Ma",
-    title: "Regularization strategies in statistical image reconstruction of low-dose x-ray CT: A review",
-    journal: "Medical Physics",
-    meta: "vol.45, no.10, pp.e886-e907",
-    year: "2018",
-    cites: 94,
-  },
-  {
-    authors: "S. Li, D. Zeng, J. Peng, Z. Bian, H. Zhang, Q. Xie, et al.",
-    title: "An efficient iterative cerebral perfusion CT reconstruction via low-rank tensor decomposition with spatial-temporal total variation regularization",
-    journal: "IEEE Transactions on Medical Imaging",
-    meta: "vol.38, no.2, pp.360-370",
-    year: "2018",
-    cites: 60,
-  },
-  {
-    authors: "A. Xuan, H. Chen, T. Chen, J. Li, S. Lu, T. Fan, et al.",
-    title: "The application of machine learning in early diagnosis of osteoarthritis: a narrative review",
-    journal: "Therapeutic Advances in Musculoskeletal Disease",
-    meta: "vol.15, 1759720X231158198",
-    year: "2023",
-    cites: 57,
-  },
-  {
-    authors: "H. Zhang, D. Zeng, J. Lin, H. Zhang, Z. Bian, J. Huang, et al.",
-    title: "Iterative reconstruction for dual energy CT with an average image-induced nonlocal means regularization",
-    journal: "Physics in Medicine & Biology",
-    meta: "vol.62, no.13, pp.5556-5574",
-    year: "2017",
-    cites: 55,
-  },
-  {
-    authors: "Y. Wang, Y. Liao, Y. Zhang, J. He, S. Li, Z. Bian, et al.",
-    title: "Iterative quality enhancement via residual-artifact learning networks for low-dose CT",
-    journal: "Physics in Medicine & Biology",
-    meta: "vol.63, no.21, 215004",
-    year: "2018",
-    cites: 51,
-  },
+const journalPapers = [
+  "Hao Wang, Mingqiang Li, Shixuan Chen, Mingqiang Meng, Ji He, Jianhua Ma, Dong Zeng, Towards unified CT reconstruction: federated metadata learning with personalized condition-modulated iRadonMAP, IEEE Transactions on Radiation and Plasma Medical Sciences, 2026, 10(2): 169-180.",
+  "Qi Gao, Zhihao Chen, Dong Zeng, Junping Zhang, Jianhua Ma, Hongming Shan*, Noise-inspired diffusion model for generalizable low-dose CT reconstruction, Medical Image Analysis, 2025, 105: 103710.",
+  "Cuidie Zeng, Xiaoling Wu, Fusheng Ouyang, Baoliang Guo, Xiao Zhang, Jianhua Ma, Dong Zeng, Bin Zhang*, Perfusion parameter map generation from 3 phases of computed tomography perfusion in stroke using generative adversarial networks, Research, 2025, 8: 0689.",
+  "Danyang Li, Jiabing Sheng, Yongshuai Ge, Zheng Duan, Jiongtao Zhu, Yuting Wang, Zhaoying Bian, Jianhua Ma, Xiaoyan Huang, Dong Zeng, Robust image reconstruction with real-world noise modeling for low-dose photon-counting detector CT, Pattern Recognition, 2025: 112942.",
+  "Hao Wang, Xiaoyu Zhang, Hengtao Guo, Xuebin Ren, Shipeng Wang, Fenglei Fan, Jianhua Ma, Dong Zeng, Federated metadata-constrained iRadonMAP framework with mutual learning for all-in-one computed tomography imaging, Cyborg and Bionic Systems, 2025, 6: 0376.",
+  "Jiabing Sheng, Dong Zeng, Zhaoying Bian*, Mingqiang Li, Yongle Wu, Xin Li, Yongshuai Ge, Jianhua Ma, Inclusion of spatio-energetic charge sharing effect model for accurate photon counting CT simulation, Journal of X-Ray Science and Technology, 2025, 33(4): 695-712.",
+  "Hao Wang, Xiaoyu Zhang, Xuebin Ren, Zheng Zhang, Shusen Yang, Chunfeng Lian, Jianhua Ma, Dong Zeng*, Collaborative and privacy-preserving cross-vendor united diagnostic imaging via server-rotating federated machine learning, Communications Engineering, 2025, 4(1): 148.",
+  "Hong Wang, Qi Xie, Dong Zeng, Jianhua Ma, Deyu Meng, Yefeng Zheng*, OSCNet: orientation-shared convolutional network for CT metal artifact learning, IEEE Transactions on Medical Imaging, 2024, 43(1): 489-502.",
+  "Ting Su, Jiongtao Zhu, Xin Zhang, Yuhang Tan, Han Cui, Dong Zeng, Jinchuan Guo, Hairong Zheng, Jianhua Ma, Dong Liang, Yongshuai Ge*, Super resolution dual-energy cone-beam CT imaging with dual-layer flat-panel detector, IEEE Transactions on Medical Imaging, 2024, 43(2): 734-744.",
+  "Mingqiang Meng, Yongbo Wang, Manman Zhu, Xi Tao, Zerui Mao, Jingyi Liao, Zhaoying Bian, Dong Zeng, Jianhua Ma*, DDT-Net: dose-agnostic dual-task transfer network for simultaneous low-dose CT denoising and simulation, IEEE Journal of Biomedical and Health Informatics, 2024, 28(6): 3613-3625.",
+  "Lei Wang, Mingqiang Meng, Shixuan Chen, Zhaoying Bian, Dong Zeng, Deyu Meng, Jianhua Ma, Semi-supervised iterative adaptive network for low-dose CT sinogram recovery, Physics in Medicine and Biology, 2024, 69(8): 085013.",
+  "Manman Zhu, Qisen Zhu, Yuyan Song, Yi Guo, Dong Zeng, Zhaoying Bian, Yongbo Wang, Jianhua Ma*, Physics-informed sinogram completion for metal artifact reduction in CT imaging, Physics in Medicine and Biology, 2023, 68(6): 065006.",
+  "Yang Liu, Gaofeng Chen, Shumao Pang, Dong Zeng, Youde Ding, Guoxi Xie, Jianhua Ma, Ji He*, Cross-domain unpaired learning for low-dose CT imaging, IEEE Journal of Biomedical and Health Informatics, 2023, 27(11): 5471-5482.",
+  "Zixuan Hong, Dong Zeng, Xi Tao, Jianhua Ma*, Learning CT projection denoising from adjacent views, Medical Physics, 2023, 50(3): 1367-1377.",
+  "Danyang Li, Zhaoying Bian, Sui Li, Ji He, Dong Zeng, Jianhua Ma, Noise characteristics modeled unsupervised network for robust CT image reconstruction, IEEE Transactions on Medical Imaging, 2022, 41(12): 3849-3861.",
+  "Dong Zeng, Lei Wang, Mingrui Geng, Sui Li, Yun Deng, Qi Xie, Danyang Li, Hua Zhang, Yuanqing Li, Zongben Xu, Deyu Meng, Jianhua Ma*, Noise-generating-mechanism-driven unsupervised learning for low-dose CT sinogram recovery, IEEE Transactions on Radiation and Plasma Medical Sciences, 2022, 6(4): 404-414.",
+  "Manman Zhu, Zerui Mao, Danyang Li, Yongbo Wang, Dong Zeng, Zhaoying Bian, Jianhua Ma, Structure-preserved meta-learning uniting network for improving low-dose CT quality, Physics in Medicine and Biology, 2022, 67(24): 245015.",
+  "Dong Zeng, Cuidie Zeng, Zhixiong Zeng, Sui Li, Zhen Deng, Sijin Chen, Zhaoying Bian, Jianhua Ma, Basis and current state of computed tomography perfusion imaging: a review, Physics in Medicine and Biology, 2022, 67(18): 18TR01.",
+  "Sui Li, Dong Zeng, Zhaoying Bian, Jianhua Ma, Noise modelling of perfusion CT images for robust hemodynamic parameter estimations, Physics in Medicine and Biology, 2022, 67(11): 115016.",
+  "Ji He, Shilin Chen, Hua Zhang, Xi Tao, Wuhong Lin, Shanli Zhang, Dong Zeng, Jianhua Ma*, Downsampled imaging geometric modeling for accurate CT reconstruction via deep learning, IEEE Transactions on Medical Imaging, 2021, 40(11): 2976-2985.",
+  "Sui Li, Dong Zeng, Zhaoying Bian, Danyang Li, Manman Zhu, Jing Huang, Jianhua Ma, Learning non-local perfusion textures for high-quality computed tomography perfusion imaging, Physics in Medicine and Biology, 2021, 66(11): 115007.",
+  "Yuanke Zhang, Dong Zeng, Zhaoying Bian, Hongbing Lu, Jianhua Ma*, Weighted tensor low-rankness and learnable analysis sparse representation model for texture preserving low-dose CT reconstruction, IEEE Transactions on Computational Imaging, 2021, 7: 321-336.",
+  "Hao Zhang, Dante Capaldi, Dong Zeng, Jianhua Ma*, Lei Xing, Prior-image-based CT reconstruction using attenuation-mismatched priors, Physics in Medicine and Biology, 2021, 66(6): 064007.",
+  "Xinyu Zhang, Cuixia Liang, Dong Zeng, Xiaocong Jiang, Rikui Zhong, Yuhong Lan, Jianhua Ma, Li Bai, Pattern classification for breast lesion on FFDM by integration of radiomics and deep features, Computerized Medical Imaging and Graphics, 2021, 90: 101922.",
+  "Xi Tao, Hua Zhang, Yongbo Wang, Gang Yan, Dong Zeng, Wufan Chen, Jianhua Ma*, VVBP-tensor in the FBP algorithm: its properties and application in low-dose CT reconstruction, IEEE Transactions on Medical Imaging, 2020, 39(3): 764-776.",
+  "Dong Zeng, Lisha Yao, Yongshuai Ge, Sui Li, Qi Xie, Hao Zhang, Zhaoying Bian, Qian Zhao, Yuanqing Li, Zongben Xu, Deyu Meng, Jianhua Ma*, Full-spectrum-knowledge-aware tensor model for energy-resolved CT iterative reconstruction, IEEE Transactions on Medical Imaging, 2020, 39(9): 2831-2843.",
+  "Danyang Li, Dong Zeng, Sui Li, Yongshuai Ge, Zhaoying Bian, Jing Huang, Jianhua Ma*, MDM-PCCT: Multiple dynamic modulations for high-performance spectral PCCT imaging, IEEE Transactions on Medical Imaging, 2020, 39(11): 3630-3642.",
+  "Yuanke Zhang, Jiangjun Peng, Dong Zeng, Qi Xie, Sui Li, Zhaoying Bian, Yongbo Wang, Yong Zhang, Qian Zhao, Hao Zhang, Zhengrong Liang, Hongbing Lu, Deyu Meng, Jianhua Ma*, Contrast-medium anisotropy-aware tensor total variation model for robust cerebral perfusion CT reconstruction with low-dose scans, IEEE Transactions on Computational Imaging, 2020, 6: 1375-1388.",
+  "Ji He, Yan Yang, Yongbo Wang, Dong Zeng, Zhaoying Bian, Hao Zhang, Jian Sun, Zongben Xu, Jianhua Ma*, Optimizing a parameterized plug-and-play ADMM for iterative low-dose CT reconstruction, IEEE Transactions on Medical Imaging, 2019, 38(2): 371-382.",
+  "Sui Li, Dong Zeng, Jiangjun Peng, Zhaoying Bian, Hao Zhang, Qi Xie, Yongbo Wang, Yuting Liao, Shanli Zhang, Jing Huang, Deyu Meng, Zongben Xu, Jianhua Ma*, An efficient iterative cerebral perfusion CT reconstruction via low-rank tensor decomposition with spatial-temporal total variation regularization, IEEE Transactions on Medical Imaging, 2019, 38(2): 360-370.",
+  "Lisha Yao, Dong Zeng, Gaofeng Chen, Yuting Liao, Sui Li, Yuanke Zhang, Yongbo Wang, Xi Tao, Shanzhou Niu, Qingwen Lv, Zhaoying Bian, Jianhua Ma, Jing Huang, Multi-energy computed tomography reconstruction using a nonlocal spectral similarity model, Physics in Medicine and Biology, 2019, 64(3): 035018.",
+  "Shanli Zhang, Dong Zeng, Shanzhou Niu, Houjin Zhang, Huanqi Xu, Sui Li, Shijun Qiu, Jianhua Ma*, High-fidelity image deconvolution for low-dose cerebral perfusion CT imaging via low-rank and total variation regularizations, Neurocomputing, 2019, 323: 175-187.",
+  "Cuixia Liang, Zhaoying Bian, Wenbing Lv, Shijun Chen, Dong Zeng, Jianhua Ma, A computer-aided diagnosis scheme of breast lesion classification using GLGLM and shape features: Combined-view and multi-classifiers, Physica Medica, 2018, 55: 61-72.",
+  "Hao Zhang, Jing Wang, Dong Zeng, Xi Tao, Jianhua Ma*, Regularization strategies in statistical image reconstruction of low-dose x-ray CT: A review, Medical Physics, 2018, 45(10): e886-e907.",
+  "Yongbo Wang, Yuting Liao, Yuanke Zhang, Ji He, Sui Li, Zhaoying Bian, Hao Zhang, Yuanyuan Gao, Deyu Meng, Wangmeng Zuo, Dong Zeng, Jianhua Ma, Iterative quality enhancement via residual-artifact learning networks for low-dose CT, Physics in Medicine and Biology, 2018, 63(21): 215004.",
+  "Chengwei Gu, Dong Zeng, Jiahui Lin, Sui Li, Ji He, Hao Zhang, Zhaoying Bian, Shanzhou Niu, Zhang Zhang, Jing Huang, Bo Chen, Dazhe Zhao, Wufan Chen, Jianhua Ma*, Promote quantitative ischemia imaging via myocardial perfusion CT iterative reconstruction with tensor total generalized variation regularization, Physics in Medicine and Biology, 2018, 63(12): 125009.",
+  "Qi Xie, Dong Zeng, Qian Zhao, Deyu Meng, Zongben Xu, Zhengrong Liang, Jianhua Ma*, Robust low-dose CT sinogram preprocessing via exploiting noise-generating mechanism, IEEE Transactions on Medical Imaging, 2017, 36(12): 2487-2498.",
+  "Houjin Zhang, Dong Zeng, Jiahui Lin, Hao Zhang, Zhaoying Bian, Jing Huang, Yuanyuan Gao, Shanli Zhang, Hua Zhang, Qianjin Feng, Zhengrong Liang, Wufan Chen, Jianhua Ma*, Iterative reconstruction for dual energy CT with an average image-induced nonlocal means regularization, Physics in Medicine and Biology, 2017, 62(13): 5556-5574.",
+  "Hua Zhang, Jianhua Ma, Zhaoying Bian, Dong Zeng, Qianjin Feng, Wufan Chen, High quality 4D cone-beam CT reconstruction using motion-compensated total variation regularization, Physics in Medicine and Biology, 2017, 62(8): 3313-3329.",
+  "Dong Zeng, Qi Xie, Wenfei Cao, Jiahui Lin, Hao Zhang, Shanli Zhang, Jing Huang, Zhaoying Bian, Deyu Meng, Zongben Xu, Zhengrong Liang, Wufan Chen, Jianhua Ma*, Low-dose dynamic cerebral perfusion computed tomography reconstruction via Kronecker-basis-representation tensor sparsity regularization, IEEE Transactions on Medical Imaging, 2017, 36(12): 2546-2556.",
+  "Zhaoying Bian, Dong Zeng, Zhang Zhang, Changfei Gong, Xiumei Tian, Gang Yan, Jing Huang, Hong Guo, Bo Chen, Jing Zhang, Qianjin Feng, Wufan Chen, Jianhua Ma*, Low-dose dynamic myocardial perfusion CT imaging using a motion adaptive sparsity prior, Medical Physics, 2017, 44(9): e188-e201.",
+  "Dong Zeng, Jing Huang, Hua Zhang, Zhaoying Bian, Shanzhou Niu, Zhang Zhang, Qianjin Feng, Wufan Chen, Jianhua Ma*, Spectral CT image restoration via an average image-induced nonlocal means filter, IEEE Transactions on Biomedical Engineering, 2016, 63(5): 1044-1057.",
+  "Dong Zeng, Yuanyuan Gao, Jing Huang, Zhaoying Bian, Hua Zhang, Lijun Lu, Jianhua Ma*, Penalized weighted least-squares approach for multienergy computed tomography image reconstruction via structure tensor total variation regularization, Computerized Medical Imaging and Graphics, 2016, 53: 19-29.",
+  "Dong Zeng, Xinyu Zhang, Zhaoying Bian, Jing Huang, Hua Zhang, Lijun Lu, Wenbing Lyu, Jing Zhang, Qianjin Feng, Wufan Chen, Jianhua Ma*, Cerebral perfusion computed tomography deconvolution via structure tensor total variation regularization, Medical Physics, 2016, 43(5): 2091-2107.",
+  "Dong Zeng, Changfei Gong, Zhaoying Bian, Jing Huang, Xinyu Zhang, Hua Zhang, Lijun Lu, Shanzhou Niu, Zhang Zhang, Zhengrong Liang, Qianjin Feng, Wufan Chen, Jianhua Ma*, Robust dynamic myocardial perfusion CT deconvolution for accurate residue function estimation via adaptive-weighted tensor total variation regularization: a preclinical study, Physics in Medicine and Biology, 2016, 61(22): 8135-8156.",
+  "Dong Zeng, Jing Huang, Zhaoying Bian, Shanzhou Niu, Hua Zhang, Qianjin Feng, Zhengrong Liang, Jianhua Ma*, A simple low-dose x-ray CT simulation from high-dose scan, IEEE Transactions on Nuclear Science, 2015, 62(5): 2226-2233.",
+];
+const conferencePapers = [
+  "Hao Wang, Junhao Wu, Deyang Kong, Yankun Wang, Yule Li, Zhaoying Bian, Jianhua Ma, Dong Zeng, A peer-to-peer federated incremental learning framework for multi-institutional low-dose CT denoising, ACM MM Proceedings of the International Workshop on Personalized Incremental Learning in Medicine, 2025.",
+  "Shixuan Chen, Boxuan Cao, Yinda Du, Yaoduo Zhang, Ji He, Zhaoying Bian, Dong Zeng, Jianhua Ma, Federated condition generalization on low-dose CT reconstruction via cross-domain learning, MICCAI, 2023.",
+  "Zheng Duan, Jingyi Liao, Yongbo Wang, Danyang Li, Zhaoying Bian, Dong Zeng, Jianhua Ma, Adaptive semi-supervised learning material estimation network in dual-energy CT, SPIE Medical Imaging 2023: Physics of Medical Imaging, 2023.",
+  "Danyang Li, Cuidie Zeng, Jingyi Liao, Mingqiang Meng, Hao Wang, Yuting Wang, Dong Zeng, Jianhua Ma, Robust multi-institution low-dose CT imaging with semi-supervised federated learning network, SPIE Medical Imaging 2023: Physics of Medical Imaging, 2023.",
+  "Shixuan Chen, Ji He, Danyang Li, Dong Zeng, Zhaoying Bian, Jianhua Ma, Dual-domain modulation for high-performance multi-geometry low-dose CT image reconstruction, SPIE Medical Imaging 2023: Physics of Medical Imaging, 2023.",
+  "Danyang Li, Hao Wang, Jingyi Liao, Mingqiang Meng, Cuidie Zeng, Yuting Wang, Dong Zeng, Jianhua Ma, Semi-centralized federated learning network for low-dose CT imaging, SPIE Medical Imaging 2023: Physics of Medical Imaging, 2023.",
+  "Lei Wang, Yongbo Wang, Zhaoying Bian, Dong Zeng, Jianhua Ma, Self-supervised nonlocal spectral similarity induced material decomposition network for dual-energy CT, 7th International Conference on Image Formation in X-Ray Computed Tomography, 2022.",
+  "Yi Guo, Yongbo Wang, Manman Zhu, Dong Zeng, Zhaoying Bian, Xi Tao, Jianhua Ma, Dual domain closed-loop learning for sparse-view CT reconstruction, 7th International Conference on Image Formation in X-Ray Computed Tomography, 2022.",
+  "Danyang Li, Zheng Duan, Dong Zeng, Zhaoying Bian, Jianhua Ma, Full-spectrum-knowledge-aware unsupervised network for photon-counting CT imaging, 7th International Conference on Image Formation in X-Ray Computed Tomography, 2022.",
+  "Danyang Li, Zheng Duan, Dong Zeng, Zhaoying Bian, Jianhua Ma, Statistical iteration reconstruction based on Gaussian mixture model for photon-counting CT, 7th International Conference on Image Formation in X-Ray Computed Tomography, 2022.",
+  "Mingqiang Meng, Yongbo Wang, Manman Zhu, Xi Tao, Zhaoying Bian, Dong Zeng, Jianhua Ma, Dual-task learning for low-dose CT simulation and denoising, 7th International Conference on Image Formation in X-Ray Computed Tomography, 2022.",
+  "Sui Li, Zhaoying Bian, Dong Zeng, Jianhua Ma, High resolution cerebral perfusion deconvolution via mixture of Gaussian model based on noise properties, 7th International Conference on Image Formation in X-Ray Computed Tomography, 2022.",
+  "Mingqiang Meng, Sui Li, Lisha Yao, Danyang Li, Manman Zhu, Qi Gao, Qi Xie, Qian Zhao, Zhaoying Bian, Jing Huang, Deyu Meng, Dong Zeng, Jianhua Ma, Semi-supervised learned sinogram restoration network for low-dose CT image reconstruction, SPIE Medical Imaging 2020: Physics of Medical Imaging, 2020.",
+  "Qi Gao, Sui Li, Manman Zhu, Danyang Li, Zhaoying Bian, Qingwen Lv, Dong Zeng, Jianhua Ma, Combined global and local information for blind CT image quality assessment via deep learning, SPIE Medical Imaging 2020: Physics of Medical Imaging, 2020.",
+  "Lei Wang, Qi Gao, Mingqiang Meng, Sui Li, Manman Zhu, Danyang Li, Gaofeng Chen, Dong Zeng, Qi Xie, Qian Zhao, Zhaoying Bian, Deyu Meng, Jianhua Ma, Semi-supervised noise distribution learning for low-dose CT restoration, SPIE Medical Imaging 2020: Physics of Medical Imaging, 2020.",
+  "Danyang Li, Sui Li, Manman Zhu, Qi Gao, Zhaoying Bian, Haiyun Huang, Shanli Zhang, Jing Huang, Dong Zeng, Jianhua Ma, Unsupervised data fidelity enhancement network for spectral CT reconstruction, SPIE Medical Imaging 2020: Physics of Medical Imaging, 2020.",
+  "Sui Li, Lisha Yao, Manman Zhu, Danyang Li, Qi Gao, Xinyu Zhang, Rikui Zhong, Zhaoying Bian, Dong Zeng, Jianhua Ma, Non-local texture learning approach for CT imaging problems using convolutional neural network, SPIE Medical Imaging 2020: Physics of Medical Imaging, 2020.",
 ];
 
 const achievements = [
@@ -230,6 +215,10 @@ const studentAwards = [
   { project: "基于流变信号建模的平扫CT计算血流参数图模型", competition: "第十一届全国大学生生物医学工程创新创业竞赛", award: "三等奖", year: "2026" },
   { project: "基于光子计数CT双通道输入的心肌灌注定量", competition: "第五届广东省大学生生物医学工程创新创业竞赛", award: "三等奖", year: "2026" },
 ];
+const awardCols = [
+  { title: "2022 – 2023", items: studentAwards.slice(0, 10) },
+  { title: "2024 – 2026", items: studentAwards.slice(10) },
+];
 ---
 
 <MainGridLayout title={`科研成果 - ${siteConfig.title}`} description="课题组在低剂量CT成像、光子计数能谱CT、联邦学习医学影像等领域取得了一系列重要成果。">
@@ -250,15 +239,51 @@ const studentAwards = [
       <span class="w-1 h-6 bg-[var(--accent-blue-navy)] rounded-full"></span>
       代表性论文
     </h2>
-    <div class="space-y-3">
-      {papers.map((p) => (
-        <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)] flex flex-col sm:flex-row sm:items-start gap-3">
-          <p class="text-[var(--text-primary)] flex-1">
-            {p.authors}, <span class="italic">"{p.title}"</span>, <strong>{p.journal}</strong>, {p.meta}, {p.year}.
-          </p>
-          <span class="shrink-0 self-start px-2.5 py-1 rounded-full text-xs font-mono text-[var(--accent-blue-navy)] bg-[var(--accent-blue-navy)]/10 whitespace-nowrap">被引 {p.cites} 次</span>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      <div class="min-w-0">
+        <div class="flex items-baseline justify-between mb-3">
+          <h3 class="font-bold text-[var(--text-primary)] flex items-center gap-2">
+            <span class="w-1 h-4 rounded-full bg-[var(--accent-blue-navy)]"></span>
+            期刊论文
+          </h3>
+          <span class="text-xs font-mono text-[var(--text-secondary)]">共 {journalPapers.length} 篇</span>
         </div>
-      ))}
+        <div class="space-y-2 overflow-y-auto max-h-[45rem] pr-2 -mr-2">
+          {journalPapers.map((p, i) => (
+            <div class="bg-[var(--card-bg)] rounded-[10px] p-3 border border-[var(--divider-color)] h-24 overflow-hidden hover:border-[var(--accent-blue)] transition-colors">
+              <p class="text-[13px] leading-relaxed line-clamp-3 text-[var(--text-primary)]">
+                <span class="font-mono text-[var(--accent-blue-navy)] mr-1.5">{i + 1}.</span>
+                {p.split("Dong Zeng").flatMap((seg, k, arr) => [
+                  ...(seg ? [seg] : []),
+                  ...(k < arr.length - 1 ? [<strong class="font-bold">Dong Zeng</strong>] : []),
+                ])}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+      <div class="min-w-0">
+        <div class="flex items-baseline justify-between mb-3">
+          <h3 class="font-bold text-[var(--text-primary)] flex items-center gap-2">
+            <span class="w-1 h-4 rounded-full bg-[var(--accent-blue-light)]"></span>
+            会议论文
+          </h3>
+          <span class="text-xs font-mono text-[var(--text-secondary)]">共 {conferencePapers.length} 篇</span>
+        </div>
+        <div class="space-y-2 overflow-y-auto max-h-[45rem] pr-2 -mr-2">
+          {conferencePapers.map((p, i) => (
+            <div class="bg-[var(--card-bg)] rounded-[10px] p-3 border border-[var(--divider-color)] h-24 overflow-hidden hover:border-[var(--accent-blue)] transition-colors">
+              <p class="text-[13px] leading-relaxed line-clamp-3 text-[var(--text-primary)]">
+                <span class="font-mono text-[var(--accent-blue-navy)] mr-1.5">{i + 1}.</span>
+                {p.split("Dong Zeng").flatMap((seg, k, arr) => [
+                  ...(seg ? [seg] : []),
+                  ...(k < arr.length - 1 ? [<strong class="font-bold">Dong Zeng</strong>] : []),
+                ])}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
     </div>
   </section>
 
@@ -311,15 +336,28 @@ const studentAwards = [
       <span class="w-1 h-6 bg-[var(--accent-blue-light)] rounded-full"></span>
       学生参赛获奖情况
     </h2>
-    <div class="space-y-4">
-      {studentAwards.map((a) => (
-        <div class="bg-[var(--card-bg)] rounded-[12px] p-5 border border-[var(--divider-color)]">
-          <div class="flex flex-wrap items-center gap-2 mb-2">
-            <span class="px-3 py-0.5 rounded-full text-xs font-mono text-[var(--accent-blue-light)] bg-[var(--accent-blue-light)]/10">{a.award}</span>
-            <span class="text-xs font-mono text-[var(--text-secondary)]">{a.year}</span>
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+      {awardCols.map((col) => (
+        <div class="min-w-0">
+          <div class="flex items-baseline justify-between mb-3">
+            <h3 class="font-bold text-[var(--text-primary)] flex items-center gap-2">
+              <span class="w-1 h-4 rounded-full bg-[var(--accent-blue-light)]"></span>
+              {col.title}
+            </h3>
+            <span class="text-xs font-mono text-[var(--text-secondary)]">共 {col.items.length} 项</span>
           </div>
-          <h4 class="font-bold text-[var(--text-primary)] leading-relaxed">{a.project || a.competition}</h4>
-          {a.project && <div class="text-sm text-[var(--text-secondary)] mt-2">{a.competition}</div>}
+          <div class="space-y-2 overflow-y-auto max-h-[52rem] pr-2 -mr-2">
+            {col.items.map((a) => (
+              <div class="bg-[var(--card-bg)] rounded-[10px] p-3 border border-[var(--divider-color)] h-28 overflow-hidden hover:border-[var(--accent-blue)] transition-colors">
+                <div class="flex items-center gap-2 mb-1.5">
+                  <span class="px-2 py-0.5 rounded-full text-[11px] font-mono text-[var(--accent-blue-light)] bg-[var(--accent-blue-light)]/10 whitespace-nowrap">{a.award}</span>
+                  <span class="text-[11px] font-mono text-[var(--text-secondary)]">{a.year}</span>
+                </div>
+                <h4 class="font-bold text-[13px] text-[var(--text-primary)] leading-snug line-clamp-2">{a.project || a.competition}</h4>
+                {a.project && <div class="text-[11px] text-[var(--text-secondary)] mt-1 truncate">{a.competition}</div>}
+              </div>
+            ))}
+          </div>
         </div>
       ))}
     </div>
